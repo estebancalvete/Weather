@@ -13,6 +13,7 @@
 		5B55D8C726274FE90033DCE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B55D8C526274FE90033DCE4 /* Main.storyboard */; };
 		5B55D8C926274FEA0033DCE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B55D8C826274FEA0033DCE4 /* Assets.xcassets */; };
 		5B55D8CC26274FEA0033DCE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B55D8CA26274FEA0033DCE4 /* LaunchScreen.storyboard */; };
+		5B55D8D8262750C50033DCE4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55D8D7262750C50033DCE4 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5B55D8C826274FEA0033DCE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B55D8CB26274FEA0033DCE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B55D8CD26274FEA0033DCE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B55D8D7262750C50033DCE4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,40 @@
 		5B55D8BE26274FE90033DCE4 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				5B55D8D42627501B0033DCE4 /* Model */,
+				5B55D8D5262750260033DCE4 /* Services */,
+				5B55D8D6262750320033DCE4 /* View */,
 				5B55D8BF26274FE90033DCE4 /* AppDelegate.swift */,
 				5B55D8C126274FE90033DCE4 /* SceneDelegate.swift */,
-				5B55D8C326274FE90033DCE4 /* ViewController.swift */,
-				5B55D8C526274FE90033DCE4 /* Main.storyboard */,
 				5B55D8C826274FEA0033DCE4 /* Assets.xcassets */,
 				5B55D8CA26274FEA0033DCE4 /* LaunchScreen.storyboard */,
 				5B55D8CD26274FEA0033DCE4 /* Info.plist */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		5B55D8D42627501B0033DCE4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5B55D8D5262750260033DCE4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5B55D8D7262750C50033DCE4 /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5B55D8D6262750320033DCE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5B55D8C526274FE90033DCE4 /* Main.storyboard */,
+				5B55D8C326274FE90033DCE4 /* ViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +166,7 @@
 			files = (
 				5B55D8C426274FE90033DCE4 /* ViewController.swift in Sources */,
 				5B55D8C026274FE90033DCE4 /* AppDelegate.swift in Sources */,
+				5B55D8D8262750C50033DCE4 /* NetworkService.swift in Sources */,
 				5B55D8C226274FE90033DCE4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
