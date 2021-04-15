@@ -58,13 +58,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
+        NetworkService.shared.getWeather { (response) in
+            let c: String = String(format: "%.1f", response?.current.temp ?? "")
+            self.currentTempLable.text = c
+        }
         
         
+//        NetworkService.shared.getWeather(onSuccess: updateLabels)
+
         
-        NetworkService.shared.getWeather()
     }
 
     //MARK: Functions
-
+    
+//    func updateLabels(response: OneCallResponse?) -> Void {
+//
+//    }
 }
 
