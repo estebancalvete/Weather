@@ -15,7 +15,7 @@ class NetworkService {
     var longitude: String = "13.4050"
     let apiKey: String = "7564695d8d9f46060ac0234173fa0ea0"
     let urlString: String = "https://api.openweathermap.org/data/2.5/onecall?lat=%@&lon=%@&appid=%@"
-    let session = URLSession(configuration: .default)
+    let session: URLSession = URLSession(configuration: .default)
 
     //var urlString: String = "https://api.openweathermap.org/data/2.5/onecall?lat=\(latitudeAsString)&lon=\(longitudeAsString)&appid=\(apiKey)"
 
@@ -26,12 +26,17 @@ class NetworkService {
 
     func getWeather() {
         if let url = configureUrl() {
-            let task = session.dataTask(with: url) { data, response, error in
+
+            let task1 = session.dataTask(with: url, completionHandler: completeResult)
+            task1.resume()
+            
+            
+            let task = session.dataTask(with: url) { datos, response, error in
                 if error != nil {
                     print("Error")
                     return
                 }
-                if let data = data {
+                if let data = datos {
                     if let jsonString = String(data: data, encoding: .utf8) {
                         print(jsonString)
                     }
@@ -42,6 +47,18 @@ class NetworkService {
     }
 
     //MARK: Private
+    
+    func completeResult(data: Data?, response: URLResponse?, error: Error?) -> Void {
+        if error != nil {
+            print("Error")
+            return
+        }
+        if let data = data {
+            if let jsonString = String(data: data, encoding: .utf8) {
+                print(jsonString)
+            }
+        }
+    }
 
     private func configureUrl () -> URL? {
         let result: String = String(format: urlString, latitude, longitude, apiKey)
