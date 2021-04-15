@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         
         
         
-        networkService.shared.getWeather()
+        NetworkService.shared.getWeather()
     }
 
     //MARK: Functions

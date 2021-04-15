@@ -7,7 +7,7 @@
 
 import Foundation
 
-class networkService {
+class NetworkService {
     
     //MARK: Variables
 
@@ -21,7 +21,7 @@ class networkService {
 
     //MARK: Functions
 
-    static let shared = networkService()
+    static let shared = NetworkService()
 
 
     func getWeather() {
