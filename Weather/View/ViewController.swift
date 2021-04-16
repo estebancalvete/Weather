@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     //MARK: Variables
     
+    var cityName: String = "Berlin"
     
     
     //MARK: Constants
@@ -57,7 +58,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        cityNameLable.text = cityName
         
         
         

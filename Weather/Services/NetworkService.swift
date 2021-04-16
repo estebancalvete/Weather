@@ -17,7 +17,6 @@ class NetworkService {
     let urlString: String = "https://api.openweathermap.org/data/2.5/onecall?lat=%@&lon=%@&appid=%@"
     let session = URLSession(configuration: .default)
 
-    //var urlString: String = "https://api.openweathermap.org/data/2.5/onecall?lat=\(latitudeAsString)&lon=\(longitudeAsString)&appid=\(apiKey)"
 
     //MARK: Functions
 
