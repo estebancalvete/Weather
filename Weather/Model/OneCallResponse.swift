@@ -7,7 +7,7 @@
 
 import Foundation
 
-class OneCallResponse: NSObject, Codable {
+class OneCallResponse: Codable {
     let lat: Double
     let lon: Double
     let timezone: String
@@ -19,7 +19,7 @@ class OneCallResponse: NSObject, Codable {
     let alerts: [Alert]
 }
 
-class CurrentWeather: NSObject, Codable {
+class CurrentWeather: Codable {
     let dt: Double
     let sunrise: Double
     let sunset: Double
@@ -39,7 +39,7 @@ class CurrentWeather: NSObject, Codable {
     let weather: [WeatherInfo]
 }
 
-class MinutelyWeather: NSObject, Codable {
+class MinutelyWeather: Codable {
     let dt: Double
     let precipitation: Double
 }
@@ -64,7 +64,7 @@ class HourlyWeather: NSObject, Codable {
 
 }
 
-class DailyWeather: NSObject, Codable {
+class DailyWeather: Codable {
     let dt: Double
     let sunrise: Double
     let sunset: Double
@@ -87,7 +87,7 @@ class DailyWeather: NSObject, Codable {
     let uvi: Double
 }
 
-class Alert: NSObject, Codable {
+class Alert: Codable {
     let sender_name: String
     let event: String
     let start: Double
@@ -95,14 +95,14 @@ class Alert: NSObject, Codable {
     let description: String
 }
 
-class WeatherInfo: NSObject, Codable {
+class WeatherInfo: Codable {
     let id: Double
     let main: String
     let description: String
     let icon: String
 }
 
-class ThermoTemps: NSObject, Codable {
+class ThermoTemps: Codable {
     let day: Double
     let min: Double
     let max: Double
@@ -111,17 +111,23 @@ class ThermoTemps: NSObject, Codable {
     let morn: Double
 }
 
-class FeelsTemps: NSObject, Codable {
+class FeelsTemps: Codable {
     let day: Double
     let nihgt: Double
     let eve: Double
     let morn: Double
 }
 
-class AverageRain: NSObject, Codable {
-    let 1h: Double
+class AverageRain: Codable {
+    let averageValue: Double
+    enum CodingKeys: String, CodingKey {
+        case averageValue = "1h"
+    }
 }
 
-class AverageSnow: NSObject, Codable {
-    let 1h: Double
+class AverageSnow: Codable {
+    let averageValue: Double
+    enum CodingKeys: String, CodingKey {
+        case averageValue = "1h"
+    }
 }
