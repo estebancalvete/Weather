@@ -23,16 +23,17 @@ class NetworkService {
     static let shared = NetworkService()
 
 
-    func getWeather() {
+    func getWeather(onSuccess: @escaping (OneCallResponse?) -> Void) {
         if let url = configureUrl() {
             let task = session.dataTask(with: url) { data, response, error in
-                if error != nil {
-                    print("Error")
-                    return
-                }
-                if let data = data {
-                    if let jsonString = String(data: data, encoding: .utf8) {
-                        print(jsonString)
+                DispatchQueue.main.async {
+                    if error != nil {
+                        print("Error")
+                        return
+                    }
+                    if let data = data {
+                        let oneCallResponse = try? JSONDecoder().decode(OneCallResponse.self, from: data)
+                        onSuccess(oneCallResponse)
                     }
                 }
             }

@@ -16,6 +16,10 @@ class ViewController: UIViewController {
     
     //MARK: Constants
     
+    enum DaysOfWeek {
+        case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+    }
+    
     
     
     //MARK: IBOutlets
@@ -60,9 +64,10 @@ class ViewController: UIViewController {
         
         cityNameLable.text = cityName
         
-        
-        
-        NetworkService.shared.getWeather()
+        NetworkService.shared.getWeather { (response) in
+            let ct: String = String(format: "%.1f", response?.current.temp ?? "")
+            self.currentTempLable.text = ct
+        }
     }
 
     //MARK: Functions
