@@ -16,9 +16,7 @@ class ViewController: UIViewController {
     
     //MARK: Constants
     
-    enum DaysOfWeek {
-        case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
-    }
+    
     
     
     
@@ -65,8 +63,43 @@ class ViewController: UIViewController {
         cityNameLable.text = cityName
         
         NetworkService.shared.getWeather { (response) in
-            let ct: String = String(format: "%.1f", response?.current.temp ?? "")
-            self.currentTempLable.text = ct
+            self.currentTempLable.text = String(format: "%.1f", response?.current.temp ?? "T ºC")
+            let description: String = response?.current.weather[0].description ?? "Description"
+            self.weatherTitleLable.text = description
+            var imageString: String = "cloud"
+            switch description {
+            case "clear sky":
+                imageString = "sun.max"
+            case "few clouds":
+                imageString = "cloud.sun"
+            case "scattered clouds":
+                imageString = "cloud"
+            case "broken clouds":
+                imageString = "cloud.fill"
+            case "shower rain":
+                imageString = "cloud.heavyrain"
+            case "rain":
+                imageString = "cloud.rain"
+            case "thunderstorm":
+                imageString = "cloud.bolt"
+            case "snow":
+                imageString = "snow"
+            case "mist":
+                imageString = "cloud.fog"
+            default:
+                imageString = "moon.stars"
+            }
+            self.currentWeatherImage.image = UIImage(systemName: imageString)
+            
+//            let iconCode: String = response?.current.weather[0].icon ?? ""
+//            switch iconCode {
+//            case: "01d"
+//                self.currentWeatherImage.image = UIImage(systemName: "cloud.rain.fill")
+//            case: "02d"
+//                self.currentWeatherImage.image = UIImage(systemName: "cloud.rain.fill")
+//            default:
+//                self.currentWeatherImage.image = UIImage(systemName: "moon.stars")
+//            }
         }
     }
 

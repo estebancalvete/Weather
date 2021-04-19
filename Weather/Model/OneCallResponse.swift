@@ -16,7 +16,7 @@ class OneCallResponse: Codable {
     let minutely: [MinutelyWeather]
     let hourly: [HourlyWeather]
     let daily: [DailyWeather]
-    let alerts: [Alert]
+    let alerts: [Alert]?
 }
 
 class CurrentWeather: Codable {
@@ -33,9 +33,9 @@ class CurrentWeather: Codable {
     let visibility: Double
     let wind_speed: Double
     let wind_deg: Double
-    let wind_gust: Double
-    let rain: AverageRain
-    let snow: AverageSnow
+    let wind_gust: Double?
+    let rain: AverageRain?
+    let snow: AverageSnow?
     let weather: [WeatherInfo]
 }
 
@@ -56,10 +56,10 @@ class HourlyWeather: NSObject, Codable {
     let visibility: Double
     let wind_speed: Double
     let wind_deg: Double
-    let wind_gust: Double
+    let wind_gust: Double?
     let pop: Double
-    let rain: AverageRain
-    let snow: AverageSnow
+    let rain: AverageRain?
+    let snow: AverageSnow?
     let weather: [WeatherInfo]
 
 }
@@ -73,17 +73,17 @@ class DailyWeather: Codable {
     let moon_phase: Double
     let temp: ThermoTemps
     let feels_like: FeelsTemps
-    let preassure: Double
+    let pressure: Double
     let humidity: Double
     let dew_point: Double
     let wind_speed: Double
     let wind_deg: Double
-    let wind_gust: Double
+    let wind_gust: Double?
     let weather: [WeatherInfo]
     let clouds: Double
     let pop: Double
-    let rain: Double
-    let snow: Double
+    let rain: Double?
+    let snow: Double?
     let uvi: Double
 }
 
@@ -113,7 +113,7 @@ class ThermoTemps: Codable {
 
 class FeelsTemps: Codable {
     let day: Double
-    let nihgt: Double
+    let night: Double
     let eve: Double
     let morn: Double
 }
