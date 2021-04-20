@@ -55,13 +55,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Week's Forecast" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcs-Br-NAZ">
-                                <rect key="frame" x="20" y="348.66666666666669" width="350" height="28.666666666666686"/>
+                                <rect key="frame" x="20" y="300" width="350" height="28.666666666666686"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DGa-Fz-5Nw">
-                                <rect key="frame" x="20" y="387.33333333333326" width="350" height="410"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DGa-Fz-5Nw">
+                                <rect key="frame" x="20" y="338.66666666666674" width="350" height="410"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="right" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="d43-ou-oGB">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="60"/>
@@ -106,7 +106,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="right" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ikN-T7-5Qf">
-                                        <rect key="frame" x="0.0" y="140.00000000000006" width="350" height="60"/>
+                                        <rect key="frame" x="0.0" y="140" width="350" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DayOfWeek3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkw-JW-1Zc">
                                                 <rect key="frame" x="0.0" y="0.0" width="218" height="60"/>
@@ -127,7 +127,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="right" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="v7r-b8-Owk">
-                                        <rect key="frame" x="0.0" y="210.00000000000006" width="350" height="60"/>
+                                        <rect key="frame" x="0.0" y="209.99999999999994" width="350" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DayOfWeek4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUk-ih-YeL">
                                                 <rect key="frame" x="0.0" y="0.0" width="218" height="60"/>
@@ -148,7 +148,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="right" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8mc-en-Sxc">
-                                        <rect key="frame" x="0.0" y="280.00000000000006" width="350" height="60"/>
+                                        <rect key="frame" x="0.0" y="279.99999999999994" width="350" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DayOfWeek5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YI4-Nn-Vln">
                                                 <rect key="frame" x="0.0" y="0.0" width="218" height="60"/>
@@ -169,7 +169,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="right" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="uLZ-0h-szd">
-                                        <rect key="frame" x="0.0" y="350.00000000000006" width="350" height="60"/>
+                                        <rect key="frame" x="0.0" y="349.99999999999994" width="350" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DayOfWeek6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glD-0Y-yaa">
                                                 <rect key="frame" x="0.0" y="0.0" width="218.33333333333334" height="60"/>
@@ -194,6 +194,54 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PpQ-um-8n8">
+                                <rect key="frame" x="20" y="338.66666666666674" width="350" height="451.33333333333326"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyWeatherTableViewCell" id="Jis-zH-5Xc" customClass="DailyWeatherTableViewCell" customModule="Weather" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="350" height="24.333333969116211"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jis-zH-5Xc" id="p0d-Jx-fGU">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="24.333333969116211"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="right" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="1eC-sq-ajo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="24.333333333333332"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DayOfWeek1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7br-Xe-Zgg">
+                                                            <rect key="frame" x="0.0" y="0.0" width="216" height="24.333333333333332"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="edi-vb-dpc">
+                                                            <rect key="frame" x="216" y="0.66666666666666785" width="38.666666666666657" height="25.333333333333332"/>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99 ºC" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3L-qb-3SR">
+                                                            <rect key="frame" x="254.66666666666666" y="0.0" width="95.333333333333343" height="24.333333333333332"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="1eC-sq-ajo" secondAttribute="trailing" id="6Vx-sK-RNd"/>
+                                                <constraint firstAttribute="bottom" secondItem="1eC-sq-ajo" secondAttribute="bottom" id="MQm-qU-cAQ"/>
+                                                <constraint firstItem="1eC-sq-ajo" firstAttribute="leading" secondItem="p0d-Jx-fGU" secondAttribute="leading" id="iTy-r3-EOz"/>
+                                                <constraint firstItem="1eC-sq-ajo" firstAttribute="top" secondItem="p0d-Jx-fGU" secondAttribute="top" id="vYr-Ih-9u8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dayOfWeekLabel" destination="7br-Xe-Zgg" id="FUf-9o-OZP"/>
+                                            <outlet property="tempLabel" destination="r3L-qb-3SR" id="O5s-HY-WME"/>
+                                            <outlet property="weatherIcon" destination="edi-vb-dpc" id="btu-FH-iD6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
@@ -203,13 +251,17 @@
                             <constraint firstItem="7b7-J5-Bhp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8Vj-dF-4PL"/>
                             <constraint firstItem="1l1-LO-A4G" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="8qO-M7-JBr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DGa-Fz-5Nw" secondAttribute="trailing" constant="20" id="9qR-Zt-Nzs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PpQ-um-8n8" secondAttribute="bottom" constant="20" id="AA6-P8-Y3W"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PpQ-um-8n8" secondAttribute="trailing" constant="20" id="DSB-js-uz2"/>
                             <constraint firstItem="DGa-Fz-5Nw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="KYo-aR-9bx"/>
                             <constraint firstItem="1l1-LO-A4G" firstAttribute="top" secondItem="7b7-J5-Bhp" secondAttribute="bottom" constant="20" id="LWD-yn-Dk3"/>
                             <constraint firstItem="1l1-LO-A4G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="SMb-Ao-4au"/>
+                            <constraint firstItem="PpQ-um-8n8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="c3C-hx-abJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qcs-Br-NAZ" secondAttribute="trailing" constant="20" id="dEr-qT-NN8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7b7-J5-Bhp" secondAttribute="trailing" constant="20" id="ejJ-U7-Ryz"/>
+                            <constraint firstItem="PpQ-um-8n8" firstAttribute="top" secondItem="1l1-LO-A4G" secondAttribute="bottom" constant="10" id="gDa-Sp-tS5"/>
                             <constraint firstItem="7b7-J5-Bhp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="o6p-aN-dl2"/>
-                            <constraint firstItem="Qcs-Br-NAZ" firstAttribute="top" secondItem="7b7-J5-Bhp" secondAttribute="bottom" constant="42" id="y45-Jb-B0N"/>
+                            <constraint firstItem="PpQ-um-8n8" firstAttribute="top" secondItem="Qcs-Br-NAZ" secondAttribute="bottom" constant="10" id="va4-JQ-nD4"/>
                         </constraints>
                     </view>
                     <connections>
@@ -235,6 +287,7 @@
                         <outlet property="weekDay4Lable" destination="eUk-ih-YeL" id="eDh-hV-4cO"/>
                         <outlet property="weekDay5Lable" destination="YI4-Nn-Vln" id="yar-nD-CQv"/>
                         <outlet property="weekDay6Lable" destination="glD-0Y-yaa" id="lhJ-bp-mIV"/>
+                        <outlet property="weekForecastTableView" destination="PpQ-um-8n8" id="j12-1c-myY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

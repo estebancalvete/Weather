@@ -15,6 +15,7 @@
 		5B55D8C926274FEA0033DCE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B55D8C826274FEA0033DCE4 /* Assets.xcassets */; };
 		5B55D8CC26274FEA0033DCE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B55D8CA26274FEA0033DCE4 /* LaunchScreen.storyboard */; };
 		5B55D8D8262750C50033DCE4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55D8D7262750C50033DCE4 /* NetworkService.swift */; };
+		5BE61DD4262F33460081E473 /* DailyWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE61DD3262F33460081E473 /* DailyWeatherTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5B55D8CB26274FEA0033DCE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B55D8CD26274FEA0033DCE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B55D8D7262750C50033DCE4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		5BE61DD3262F33460081E473 /* DailyWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			children = (
 				5B55D8C526274FE90033DCE4 /* Main.storyboard */,
 				5B55D8C326274FE90033DCE4 /* ViewController.swift */,
+				5BE61DD3262F33460081E473 /* DailyWeatherTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			files = (
 				5B55D8C426274FE90033DCE4 /* ViewController.swift in Sources */,
 				5B55D8C026274FE90033DCE4 /* AppDelegate.swift in Sources */,
+				5BE61DD4262F33460081E473 /* DailyWeatherTableViewCell.swift in Sources */,
 				5B55D8D8262750C50033DCE4 /* NetworkService.swift in Sources */,
 				5B55D8C226274FE90033DCE4 /* SceneDelegate.swift in Sources */,
 				5B113F1B2629EB7300560303 /* OneCallResponse.swift in Sources */,

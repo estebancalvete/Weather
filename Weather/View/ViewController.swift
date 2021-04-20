@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
+    
 
     //MARK: Variables
     
     var cityName: String = "Berlin"
+    var apiResponse: OneCallResponse? = nil
     
     
     //MARK: Constants
@@ -53,57 +55,54 @@ class ViewController: UIViewController {
     @IBOutlet weak var day5WeatherImage: UIImageView!
     @IBOutlet weak var day6WeatherImage: UIImageView!
     
-    
+    @IBOutlet weak var weekForecastTableView: UITableView!
     
     //MARK: Live Cicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        // Configure tableview
+        weekForecastTableView.dataSource = self
+        
         cityNameLable.text = cityName
         
         NetworkService.shared.getWeather { (response) in
+            self.apiResponse = response
+            
+            self.weekForecastTableView.reloadData()
+            
+            
             self.currentTempLable.text = String(format: "%.1f", response?.current.temp ?? "T ºC")
             let description: String = response?.current.weather[0].description ?? "Description"
             self.weatherTitleLable.text = description
-            var imageString: String = "cloud"
-            switch description {
-            case "clear sky":
-                imageString = "sun.max"
-            case "few clouds":
-                imageString = "cloud.sun"
-            case "scattered clouds":
-                imageString = "cloud"
-            case "broken clouds":
-                imageString = "cloud.fill"
-            case "shower rain":
-                imageString = "cloud.heavyrain"
-            case "rain":
-                imageString = "cloud.rain"
-            case "thunderstorm":
-                imageString = "cloud.bolt"
-            case "snow":
-                imageString = "snow"
-            case "mist":
-                imageString = "cloud.fog"
-            default:
-                imageString = "moon.stars"
-            }
-            self.currentWeatherImage.image = UIImage(systemName: imageString)
             
-//            let iconCode: String = response?.current.weather[0].icon ?? ""
-//            switch iconCode {
-//            case: "01d"
-//                self.currentWeatherImage.image = UIImage(systemName: "cloud.rain.fill")
-//            case: "02d"
-//                self.currentWeatherImage.image = UIImage(systemName: "cloud.rain.fill")
-//            default:
-//                self.currentWeatherImage.image = UIImage(systemName: "moon.stars")
-//            }
+            if let iconName = response?.current.weather[0].icon {
+//                self.currentWeatherImage.image = UIImage(named: iconName)
+                self.currentWeatherImage.image = UIImage(named: "01d")
+            }
+            
         }
     }
 
     //MARK: Functions
 
+    
+    //MARK: UITableViewDataSource methods
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return apiResponse?.daily.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DailyWeatherTableViewCell",
+                                                 for: indexPath) as! DailyWeatherTableViewCell
+        if let apiResponse = apiResponse {
+            cell.configugre(data: apiResponse.daily[indexPath.row])
+        }
+
+        return cell
+    }
 }
 
