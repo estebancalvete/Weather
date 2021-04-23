@@ -22,5 +22,15 @@ class ForecastTableViewCell: UITableViewCell{
         let weekDay = cal.component(.weekday, from: time) % 7
         let dayString = Calendar.current.weekdaySymbols[weekDay]
         dayOfWeekLable.text = dayString
+        
+        dayOfWeekLable.text = time.dayOfWeek()
+        
+        dayOfWeekLable.text = dayOfWeek(date: time)
+    }
+    
+    private func dayOfWeek(date: Date) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: date).capitalized
     }
 }
