@@ -15,6 +15,7 @@
 		5B55D8C926274FEA0033DCE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B55D8C826274FEA0033DCE4 /* Assets.xcassets */; };
 		5B55D8CC26274FEA0033DCE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B55D8CA26274FEA0033DCE4 /* LaunchScreen.storyboard */; };
 		5B55D8D8262750C50033DCE4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55D8D7262750C50033DCE4 /* NetworkService.swift */; };
+		5B9604402631D8CE008CF870 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5B55D8CB26274FEA0033DCE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B55D8CD26274FEA0033DCE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B55D8D7262750C50033DCE4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			children = (
 				5B55D8C526274FE90033DCE4 /* Main.storyboard */,
 				5B55D8C326274FE90033DCE4 /* ViewController.swift */,
+				5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9604402631D8CE008CF870 /* ForecastTableViewCell.swift in Sources */,
 				5B55D8C426274FE90033DCE4 /* ViewController.swift in Sources */,
 				5B55D8C026274FE90033DCE4 /* AppDelegate.swift in Sources */,
 				5B55D8D8262750C50033DCE4 /* NetworkService.swift in Sources */,
