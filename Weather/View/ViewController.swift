@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate {
 
     //MARK: Variables
     
@@ -16,6 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     //MARK: Constants
     
     let cityName = "Berlin"
+    let locationManager = CLLocationManager()
     
     
     //MARK: IBOutlets
@@ -31,10 +33,27 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureLocation()
+        
         cityNameLable.text = cityName
         
         forecastWeatherTable.dataSource = self
-        
+    }
+
+    //MARK: Functions
+    
+    private func configureLocation() {
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    private func getWeatherAndUpdateView() {
         NetworkService.shared.getWeather { (response) in
             
             self.apiResponse = response
@@ -47,12 +66,9 @@ class ViewController: UIViewController, UITableViewDataSource {
                 self.currentWeatherImage.image = UIImage(named: iconCode)
             }
         }
-        
-        
-        
     }
-
-    //MARK: Functions
+    
+    //MARK: UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apiResponse?.daily.count ?? 0
@@ -64,6 +80,18 @@ class ViewController: UIViewController, UITableViewDataSource {
             cell.configure(data: apiResponse.daily[indexPath.row])
         }
         return cell
+    }
+    
+    //MARK:  CLLocationManagerDelegate
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        
+        manager.stopUpdatingLocation()
+        
+        NetworkService.shared.latitude = String(locValue.latitude)
+        NetworkService.shared.longitude = String(locValue.longitude)
+        getWeatherAndUpdateView()
     }
 }
 
