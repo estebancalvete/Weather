@@ -40,7 +40,7 @@ class NetworkService {
             task.resume()
         }
     }
-    func getLocation(onSuccess: @escaping (GeocodingResponse?) -> Void) {
+    func getLocation(onSuccess: @escaping (ReverseGeocodingResponse?) -> Void) {
         if let url = configureLocationUrl() {
             let task = session.dataTask(with: url) { data, response, error in
                 DispatchQueue.main.async {
@@ -49,8 +49,10 @@ class NetworkService {
                         return
                     }
                     if let data = data {
-                        let locationResponse = try? JSONDecoder().decode(GeocodingResponse.self, from: data)
-                        onSuccess(locationResponse)
+                        if let geocodingDatas = try? JSONDecoder().decode([GeocodingData].self, from: data) {
+                            let locationResponse = ReverseGeocodingResponse(geocodingData: geocodingDatas)
+                            onSuccess(locationResponse)
+                        }
                     }
                 }
             }

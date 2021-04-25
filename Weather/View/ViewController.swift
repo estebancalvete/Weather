@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     //MARK: Variables
     
     var apiResponse: OneCallResponse? = nil
-    var geoResponse: GeocodingResponse? = nil
+    var geoResponse: ReverseGeocodingResponse? = nil
     
     //MARK: Constants
     
@@ -51,7 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             
             self.geoResponse = response
             
-            self.cityNameLable.text = response?.GeocodingData.first?.name ?? "Sin City"
+            self.cityNameLable.text = response?.geocodingData.first?.name ?? "Sin City"
         }
         
         
