@@ -17,10 +17,12 @@ class ForecastTableViewCell: UITableViewCell{
         tempLable.text = String(format: "%.0f", data.temp.day) + " ºC"
         weatherImage.image = UIImage(named: data.weather.first?.icon ?? "01d")
         let time = Date(timeIntervalSince1970: data.dt)
-        var cal = Calendar(identifier: .gregorian)
-        cal.timeZone = TimeZone(identifier: "Europe/Berlin") ?? .current
-        let weekDay = cal.component(.weekday, from: time) % 7
-        let dayString = Calendar.current.weekdaySymbols[weekDay]
-        dayOfWeekLable.text = dayString
+        dayOfWeekLable.text = dayOfWeek(date: time)
+    }
+    
+    private func dayOfWeek(date: Date) -> String {
+        let dayFormatter = DateFormatter()
+        dayFormatter.dateFormat = "EEEE"
+        return dayFormatter.string(from: date).capitalized
     }
 }

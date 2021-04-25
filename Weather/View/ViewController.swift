@@ -12,10 +12,11 @@ class ViewController: UIViewController, UITableViewDataSource {
     //MARK: Variables
     
     var apiResponse: OneCallResponse? = nil
+    var geoResponse: GeocodingResponse? = nil
     
     //MARK: Constants
     
-    let cityName = "Berlin"
+    var cityName = "London"
     
     
     //MARK: IBOutlets
@@ -31,7 +32,6 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cityNameLable.text = cityName
         
         forecastWeatherTable.dataSource = self
         
@@ -46,6 +46,12 @@ class ViewController: UIViewController, UITableViewDataSource {
             if let iconCode = response?.current.weather[0].icon {
                 self.currentWeatherImage.image = UIImage(named: iconCode)
             }
+        }
+        NetworkService.shared.getLocation { (response) in
+            
+            self.geoResponse = response
+            
+            self.cityNameLable.text = response?.GeocodingData.first?.name ?? "Sin City"
         }
         
         
