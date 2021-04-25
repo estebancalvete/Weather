@@ -49,8 +49,14 @@ class NetworkService {
                         return
                     }
                     if let data = data {
-                        let locationResponse = try? JSONDecoder().decode(GeocodingResponse.self, from: data)
-                        onSuccess(locationResponse)
+                        if let geocodingDatas = try? JSONDecoder().decode([GeocodingData].self, from: data) {
+                            let locationResponse = GeocodingResponse(geocodingData: geocodingDatas)
+                            onSuccess(locationResponse)
+                        }
+                        
+                        
+//                        let locationResponse = try? JSONDecoder().decode(GeocodingResponse.self, from: data)
+//                        onSuccess(locationResponse)
                     }
                 }
             }

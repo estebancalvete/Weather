@@ -133,7 +133,11 @@ class AverageSnow: Codable {
 }
 
 class GeocodingResponse: Codable {
-    let GeocodingData: [GeocodingData]
+    let geocodingData: [GeocodingData]
+    
+    init(geocodingData: [GeocodingData]) {
+        self.geocodingData = geocodingData
+    }
 }
 
 class GeocodingData: Codable {
