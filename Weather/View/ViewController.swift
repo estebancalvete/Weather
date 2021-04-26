@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate {
+class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate, UICollectionViewDataSource {
 
     //MARK: Variables
     
@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     
     //MARK: Constants
     
+    let maxDailyRows = 12
     let locationManager = CLLocationManager()
     
     
@@ -27,6 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     @IBOutlet weak var currentTempLable: UILabel!
     @IBOutlet weak var currentWeatherImage: UIImageView!
     @IBOutlet weak var forecastWeatherTable: UITableView!
+    @IBOutlet weak var hourlyWeatherCollectionView: UICollectionView!
     
     //MARK: Live Cicle
     
@@ -34,6 +36,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         super.viewDidLoad()
         
         forecastWeatherTable.dataSource = self
+        hourlyWeatherCollectionView.dataSource = self
         
         configureLocation()
         
@@ -57,6 +60,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
             self.apiResponse = response
             
             self.forecastWeatherTable.reloadData()
+            self.hourlyWeatherCollectionView.reloadData()
             
             self.currentTempLable.text = String(format: "%.0f", response?.current.temp ?? "T") + " ºC"
             self.weatherTitleLable.text = (response?.current.weather[0].description)?.capitalized ?? "Weather Description"
@@ -97,6 +101,21 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastTableViewCell", for: indexPath) as! ForecastTableViewCell
         if let apiResponse = apiResponse {
             cell.configure(data: apiResponse.daily[indexPath.row])
+        }
+        return cell
+    }
+    
+    //MARK: UICollectionViewDataSource Functions
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let availableRowCount = apiResponse?.hourly.count ?? 0
+        return min(availableRowCount, maxDailyRows)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourlyForecastCollectionViewCell", for: indexPath) as! HourlyForecastCollectionViewCell
+        if let apiResponse = apiResponse {
+            cell.configure(data: apiResponse.hourly[indexPath.row])
         }
         return cell
     }
