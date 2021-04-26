@@ -7,6 +7,11 @@
 
 import Foundation
 
+
+protocol NetworkServiceDelegate: class {
+    func networkServiceDidGetWeather(response: OneCallResponse?)
+    func networkServiceDidGetLocationName(response: ReverseGeocodingResponse?)
+}
 class NetworkService {
     
     //MARK: Variables
@@ -17,13 +22,15 @@ class NetworkService {
     let urlString: String = "https://api.openweathermap.org/data/2.5/onecall?lat=%@&lon=%@&appid=%@&units=metric"
     let locationUrlString: String = "https://api.openweathermap.org/geo/1.0/reverse?lat=%@&lon=%@&limit=1&appid=%@"
     let session = URLSession(configuration: .default)
+    
+    weak var delegate: NetworkServiceDelegate?
 
     //MARK: Functions
 
     static let shared = NetworkService()
 
 
-    func getWeather(onSuccess: @escaping (OneCallResponse?) -> Void) {
+    func getWeather() {
         if let url = configureUrl() {
             let task = session.dataTask(with: url) { data, response, error in
                 DispatchQueue.main.async {
@@ -33,14 +40,15 @@ class NetworkService {
                     }
                     if let data = data {
                         let oneCallResponse = try? JSONDecoder().decode(OneCallResponse.self, from: data)
-                        onSuccess(oneCallResponse)
+                        self.delegate?.networkServiceDidGetWeather(response: oneCallResponse)
                     }
                 }
             }
             task.resume()
         }
     }
-    func getLocationName(onSuccess: @escaping (ReverseGeocodingResponse?) -> Void) {
+    
+    func getLocationName() {
         if let url = configureLocationUrl() {
             let task = session.dataTask(with: url) { data, response, error in
                 DispatchQueue.main.async {
@@ -51,7 +59,7 @@ class NetworkService {
                     if let data = data {
                         if let geocodingDatas = try? JSONDecoder().decode([GeocodingData].self, from: data) {
                             let locationResponse = ReverseGeocodingResponse(geocodingData: geocodingDatas)
-                            onSuccess(locationResponse)
+                            self.delegate?.networkServiceDidGetLocationName(response: locationResponse)
                         }
                     }
                 }
