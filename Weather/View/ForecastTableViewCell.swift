@@ -8,16 +8,16 @@
 import UIKit
 
 class ForecastTableViewCell: UITableViewCell{
-    @IBOutlet weak var dayOfWeekLable: UILabel!
+    @IBOutlet weak var dayOfWeekLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
-    @IBOutlet weak var tempLable: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
     
     func configure (data: DailyWeather) {
         
-        tempLable.text = String(format: "%.0f", data.temp.day) + " ºC"
+        tempLabel.text = String(format: "%.0f", data.temp.day) + " ºC"
         weatherImage.image = UIImage(named: data.weather.first?.icon ?? "01d")
         let time = Date(timeIntervalSince1970: data.dt)
-        dayOfWeekLable.text = dayOfWeek(date: time)
+        dayOfWeekLabel.text = dayOfWeek(date: time)
     }
     
     private func dayOfWeek(date: Date) -> String {
