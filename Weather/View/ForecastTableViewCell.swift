@@ -9,13 +9,15 @@ import UIKit
 
 class ForecastTableViewCell: UITableViewCell{
     @IBOutlet weak var dayOfWeekLabel: UILabel!
-    @IBOutlet weak var weatherImage: UIImageView!
-    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
     
     func configure (data: DailyWeather) {
         
-        tempLabel.text = String(format: "%.0f", data.temp.day) + " ºC"
-        weatherImage.image = UIImage(named: data.weather.first?.icon ?? "01d")
+        maxTempLabel.text = String(format: "%.0f", data.temp.max) + " ºC"
+        minTempLabel.text = String(format: "%.0f", data.temp.min) + " ºC"
+        weatherImageView.image = UIImage(named: data.weather.first?.icon ?? "01d")
         let time = Date(timeIntervalSince1970: data.dt)
         dayOfWeekLabel.text = dayOfWeek(date: time)
     }
