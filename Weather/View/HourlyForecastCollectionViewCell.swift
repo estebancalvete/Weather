@@ -22,7 +22,7 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     
     private func hourOfDay(date: Date) -> String {
         let dayFormatter = DateFormatter()
-        dayFormatter.dateFormat = "hh"
+        dayFormatter.dateFormat = "h a"
         return dayFormatter.string(from: date)
     }
 }

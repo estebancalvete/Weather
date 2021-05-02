@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     
     //MARK: Constants
     
+    let maxCollectionRows = 12
     let locationManager = CLLocationManager()
     
     
@@ -110,7 +111,8 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     //MARK: UICollectionViewDataSource Functions
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return apiResponse?.hourly.count ?? 0
+        let availableRows = apiResponse?.hourly.count ?? 0
+        return min(availableRows, maxCollectionRows)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
