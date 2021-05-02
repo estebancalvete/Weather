@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, CLLocationManagerDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, CLLocationManagerDelegate, NetworkServiceDelegate {
     
 
     //MARK: Variables
@@ -40,6 +40,8 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         
         hourlyForecastCollection.dataSource = self
         
+        NetworkService.shared.delegate = self
+        
         configureLocation()
         
     }
@@ -57,26 +59,30 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     
     
     private func getWeatherAndUpdateView() {
-        NetworkService.shared.getWeather { (response) in
-            
-            self.apiResponse = response
-            
-            self.forecastWeatherTable.reloadData()
-            
-            self.hourlyForecastCollection.reloadData()
-            
-            self.currentTempLable.text = String(format: "%.0f", response?.current.temp ?? "T") + " ºC"
-            self.weatherTitleLable.text = (response?.current.weather[0].description)?.capitalized ?? "Weather Description"
-            if let iconCode = response?.current.weather[0].icon {
-                self.currentWeatherImage.image = UIImage(named: iconCode)
-            }
+        NetworkService.shared.getWeather()
+        NetworkService.shared.getLocationName()
+    }
+    
+    //MARK: NetworkServiceDelegate Functions
+    
+    func networkServiceDidGetWeatherData(response: OneCallResponse?) {
+        self.apiResponse = response
+        
+        self.forecastWeatherTable.reloadData()
+        
+        self.hourlyForecastCollection.reloadData()
+        
+        self.currentTempLable.text = String(format: "%.0f", response?.current.temp ?? "T") + " ºC"
+        self.weatherTitleLable.text = (response?.current.weather[0].description)?.capitalized ?? "Weather Description"
+        if let iconCode = response?.current.weather[0].icon {
+            self.currentWeatherImage.image = UIImage(named: iconCode)
         }
-        NetworkService.shared.getLocationName { (response) in
-            
-            self.geoResponse = response
-            
-            self.cityNameLable.text = response?.geocodingData.first?.name ?? "Sin City"
-        }
+    }
+    
+    func networkServiceDidGetLocationName(response: ReverseGeocodingResponse?) {
+        self.geoResponse = response
+        
+        self.cityNameLable.text = response?.geocodingData.first?.name ?? "Sin City"
     }
     
     
