@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I6C-eo-VGR">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Location View Controller-->
+        <scene sceneID="dJo-AS-T3T">
+            <objects>
+                <viewController id="I6C-eo-VGR" customClass="SearchLocationViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aBV-bx-q8W">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KLI-iq-hB3">
+                                <rect key="frame" x="0.0" y="74" width="414" height="822"/>
+                            </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fKY-ev-bJ3">
+                                <rect key="frame" x="20" y="75" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gn1-kR-98T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYW-Pb-6Vn">
+                                <rect key="frame" x="364" y="85" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="FJL-w7-HU1"/>
+                                    <constraint firstAttribute="height" constant="30" id="lQv-Na-cVM"/>
+                                </constraints>
+                                <state key="normal" title="B"/>
+                                <connections>
+                                    <action selector="searchButtonDidTouchUpInside:" destination="I6C-eo-VGR" eventType="touchUpInside" id="C0N-MT-qmt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcU-eT-PdE">
+                                <rect key="frame" x="184" y="811" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addButtonDidTouchUpInside:" destination="I6C-eo-VGR" eventType="touchUpInside" id="G0I-pZ-CPe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WXF-FI-b3Y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="KLI-iq-hB3" secondAttribute="bottom" id="5R1-OY-YjI"/>
+                            <constraint firstItem="WXF-FI-b3Y" firstAttribute="trailing" secondItem="KLI-iq-hB3" secondAttribute="trailing" id="BGY-jq-nln"/>
+                            <constraint firstItem="fKY-ev-bJ3" firstAttribute="leading" secondItem="WXF-FI-b3Y" secondAttribute="leading" constant="20" id="BeU-fE-okD"/>
+                            <constraint firstItem="fKY-ev-bJ3" firstAttribute="top" secondItem="WXF-FI-b3Y" secondAttribute="top" constant="31" id="Dsu-Xq-s4C"/>
+                            <constraint firstItem="KLI-iq-hB3" firstAttribute="top" secondItem="WXF-FI-b3Y" secondAttribute="top" constant="30" id="LdL-b2-B3F"/>
+                            <constraint firstItem="fKY-ev-bJ3" firstAttribute="centerX" secondItem="WXF-FI-b3Y" secondAttribute="centerX" id="MiG-2x-wmO"/>
+                            <constraint firstItem="PYW-Pb-6Vn" firstAttribute="trailing" secondItem="fKY-ev-bJ3" secondAttribute="trailing" id="TyM-9S-755"/>
+                            <constraint firstItem="WXF-FI-b3Y" firstAttribute="trailing" secondItem="fKY-ev-bJ3" secondAttribute="trailing" constant="20" id="jDT-nP-aXk"/>
+                            <constraint firstItem="EcU-eT-PdE" firstAttribute="centerX" secondItem="WXF-FI-b3Y" secondAttribute="centerX" id="nhb-Nl-lkZ"/>
+                            <constraint firstItem="WXF-FI-b3Y" firstAttribute="bottom" secondItem="EcU-eT-PdE" secondAttribute="bottom" constant="21" id="oWh-40-HFZ"/>
+                            <constraint firstItem="PYW-Pb-6Vn" firstAttribute="centerY" secondItem="fKY-ev-bJ3" secondAttribute="centerY" id="pZS-UT-PVx"/>
+                            <constraint firstItem="KLI-iq-hB3" firstAttribute="leading" secondItem="WXF-FI-b3Y" secondAttribute="leading" id="x3k-lf-Bkx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="locationInputTextField" destination="fKY-ev-bJ3" id="m7l-bM-cRu"/>
+                        <outlet property="mapView" destination="KLI-iq-hB3" id="Qh1-e7-biP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SsZ-Da-10g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-288.40579710144931" y="97.767857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

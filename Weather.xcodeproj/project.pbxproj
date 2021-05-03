@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5B113F1B2629EB7300560303 /* OneCallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B113F1A2629EB7300560303 /* OneCallResponse.swift */; };
+		5B37630E26405152007E23C7 /* LocationList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B37630D26405152007E23C7 /* LocationList.storyboard */; };
+		5B3763112640516C007E23C7 /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3763102640516C007E23C7 /* LocationListViewController.swift */; };
+		5B3763142640595C007E23C7 /* SearchLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3763132640595C007E23C7 /* SearchLocation.storyboard */; };
+		5B3763172640596B007E23C7 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3763162640596B007E23C7 /* SearchLocationViewController.swift */; };
 		5B55D8C026274FE90033DCE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55D8BF26274FE90033DCE4 /* AppDelegate.swift */; };
 		5B55D8C226274FE90033DCE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55D8C126274FE90033DCE4 /* SceneDelegate.swift */; };
 		5B55D8C426274FE90033DCE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55D8C326274FE90033DCE4 /* ViewController.swift */; };
@@ -22,6 +26,10 @@
 
 /* Begin PBXFileReference section */
 		5B113F1A2629EB7300560303 /* OneCallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCallResponse.swift; sourceTree = "<group>"; };
+		5B37630D26405152007E23C7 /* LocationList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationList.storyboard; sourceTree = "<group>"; };
+		5B3763102640516C007E23C7 /* LocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
+		5B3763132640595C007E23C7 /* SearchLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchLocation.storyboard; sourceTree = "<group>"; };
+		5B3763162640596B007E23C7 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		5B55D8BC26274FE90033DCE4 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B55D8BF26274FE90033DCE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B55D8C126274FE90033DCE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +110,10 @@
 				5B55D8C326274FE90033DCE4 /* ViewController.swift */,
 				5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */,
 				5B5F2041263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift */,
+				5B37630D26405152007E23C7 /* LocationList.storyboard */,
+				5B3763102640516C007E23C7 /* LocationListViewController.swift */,
+				5B3763132640595C007E23C7 /* SearchLocation.storyboard */,
+				5B3763162640596B007E23C7 /* SearchLocationViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,6 +178,8 @@
 				5B55D8CC26274FEA0033DCE4 /* LaunchScreen.storyboard in Resources */,
 				5B55D8C926274FEA0033DCE4 /* Assets.xcassets in Resources */,
 				5B55D8C726274FE90033DCE4 /* Main.storyboard in Resources */,
+				5B37630E26405152007E23C7 /* LocationList.storyboard in Resources */,
+				5B3763142640595C007E23C7 /* SearchLocation.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,11 +191,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9604402631D8CE008CF870 /* ForecastTableViewCell.swift in Sources */,
+				5B3763112640516C007E23C7 /* LocationListViewController.swift in Sources */,
 				5B55D8C426274FE90033DCE4 /* ViewController.swift in Sources */,
 				5B5F2042263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift in Sources */,
 				5B55D8C026274FE90033DCE4 /* AppDelegate.swift in Sources */,
 				5B6B204B2635B4AB003C49EB /* ReverseGeocodingResponse.swift in Sources */,
 				5B55D8D8262750C50033DCE4 /* NetworkService.swift in Sources */,
+				5B3763172640596B007E23C7 /* SearchLocationViewController.swift in Sources */,
 				5B55D8C226274FE90033DCE4 /* SceneDelegate.swift in Sources */,
 				5B113F1B2629EB7300560303 /* OneCallResponse.swift in Sources */,
 			);

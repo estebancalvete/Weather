@@ -43,6 +43,13 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         configureLocation()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     //MARK: Functions
     
     private func configureLocation() {
@@ -79,7 +86,16 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         }
     }
     
+    //MARK: IBActions
     
+    @IBAction func locationListButtonDidTouchUpInside(_ sender: Any) {
+        let vc = LocationListViewController.create()
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        
+        self.navigationController?.present(vc, animated: true, completion: nil)
+    }
     
     //MARK: CCLocationDelegate Functions
     
