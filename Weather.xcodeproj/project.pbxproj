@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5B113F1B2629EB7300560303 /* OneCallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B113F1A2629EB7300560303 /* OneCallResponse.swift */; };
+		5B4ADFA52641491F006DB0FC /* LocationList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4ADFA42641491F006DB0FC /* LocationList.storyboard */; };
+		5B4ADFA726414959006DB0FC /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ADFA626414959006DB0FC /* LocationListViewController.swift */; };
 		5B55D8C026274FE90033DCE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55D8BF26274FE90033DCE4 /* AppDelegate.swift */; };
 		5B55D8C226274FE90033DCE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55D8C126274FE90033DCE4 /* SceneDelegate.swift */; };
 		5B55D8C426274FE90033DCE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55D8C326274FE90033DCE4 /* ViewController.swift */; };
@@ -18,10 +20,15 @@
 		5B5F2042263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F2041263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift */; };
 		5B6B204B2635B4AB003C49EB /* ReverseGeocodingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B204A2635B4AB003C49EB /* ReverseGeocodingResponse.swift */; };
 		5B9604402631D8CE008CF870 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */; };
+		5BCDA1D52641B904000F4F80 /* SearchLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D42641B904000F4F80 /* SearchLocation.storyboard */; };
+		5BCDA1D72641B929000F4F80 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D62641B929000F4F80 /* SearchLocationViewController.swift */; };
+		5BCDA1D92641C1CE000F4F80 /* UIButton+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5B113F1A2629EB7300560303 /* OneCallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCallResponse.swift; sourceTree = "<group>"; };
+		5B4ADFA42641491F006DB0FC /* LocationList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationList.storyboard; sourceTree = "<group>"; };
+		5B4ADFA626414959006DB0FC /* LocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
 		5B55D8BC26274FE90033DCE4 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B55D8BF26274FE90033DCE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B55D8C126274FE90033DCE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +41,9 @@
 		5B5F2041263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B6B204A2635B4AB003C49EB /* ReverseGeocodingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodingResponse.swift; sourceTree = "<group>"; };
 		5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
+		5BCDA1D42641B904000F4F80 /* SearchLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchLocation.storyboard; sourceTree = "<group>"; };
+		5BCDA1D62641B929000F4F80 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
+		5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Addition.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +110,13 @@
 			children = (
 				5B55D8C526274FE90033DCE4 /* Main.storyboard */,
 				5B55D8C326274FE90033DCE4 /* ViewController.swift */,
-				5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */,
+				5B4ADFA42641491F006DB0FC /* LocationList.storyboard */,
+				5B4ADFA626414959006DB0FC /* LocationListViewController.swift */,
+				5BCDA1D42641B904000F4F80 /* SearchLocation.storyboard */,
+				5BCDA1D62641B929000F4F80 /* SearchLocationViewController.swift */,
 				5B5F2041263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift */,
+				5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */,
+				5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,6 +181,8 @@
 				5B55D8CC26274FEA0033DCE4 /* LaunchScreen.storyboard in Resources */,
 				5B55D8C926274FEA0033DCE4 /* Assets.xcassets in Resources */,
 				5B55D8C726274FE90033DCE4 /* Main.storyboard in Resources */,
+				5B4ADFA52641491F006DB0FC /* LocationList.storyboard in Resources */,
+				5BCDA1D52641B904000F4F80 /* SearchLocation.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,11 +194,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9604402631D8CE008CF870 /* ForecastTableViewCell.swift in Sources */,
+				5B4ADFA726414959006DB0FC /* LocationListViewController.swift in Sources */,
+				5BCDA1D92641C1CE000F4F80 /* UIButton+Addition.swift in Sources */,
 				5B55D8C426274FE90033DCE4 /* ViewController.swift in Sources */,
 				5B5F2042263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift in Sources */,
 				5B55D8C026274FE90033DCE4 /* AppDelegate.swift in Sources */,
 				5B6B204B2635B4AB003C49EB /* ReverseGeocodingResponse.swift in Sources */,
 				5B55D8D8262750C50033DCE4 /* NetworkService.swift in Sources */,
+				5BCDA1D72641B929000F4F80 /* SearchLocationViewController.swift in Sources */,
 				5B55D8C226274FE90033DCE4 /* SceneDelegate.swift in Sources */,
 				5B113F1B2629EB7300560303 /* OneCallResponse.swift in Sources */,
 			);

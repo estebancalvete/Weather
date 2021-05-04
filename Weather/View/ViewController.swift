@@ -45,6 +45,16 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         configureLocation()
         
     }
+    
+    //MARK: IBActions
+    
+    @IBAction func locationListButtonDidTouchUpInside(_ sender: Any) {
+        let locListViewContr = LocationListViewController.create()
+        self.present(locListViewContr, animated: true, completion: nil)
+        // If we are using a Navigation Controller:
+        // self.navigationController?.present(locListViewContr, animated: true, completion: nil)
+    }
+    
     //MARK: Functions
     
     private func configureLocation() {
