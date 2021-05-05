@@ -23,6 +23,7 @@
 		5BCDA1D52641B904000F4F80 /* SearchLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D42641B904000F4F80 /* SearchLocation.storyboard */; };
 		5BCDA1D72641B929000F4F80 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D62641B929000F4F80 /* SearchLocationViewController.swift */; };
 		5BCDA1D92641C1CE000F4F80 /* UIButton+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */; };
+		5BCE87202642EA2C003299A6 /* GeocodingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCE871F2642EA2B003299A6 /* GeocodingResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		5BCDA1D42641B904000F4F80 /* SearchLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchLocation.storyboard; sourceTree = "<group>"; };
 		5BCDA1D62641B929000F4F80 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Addition.swift"; sourceTree = "<group>"; };
+		5BCE871F2642EA2B003299A6 /* GeocodingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			children = (
 				5B113F1A2629EB7300560303 /* OneCallResponse.swift */,
 				5B6B204A2635B4AB003C49EB /* ReverseGeocodingResponse.swift */,
+				5BCE871F2642EA2B003299A6 /* GeocodingResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCE87202642EA2C003299A6 /* GeocodingResponse.swift in Sources */,
 				5B9604402631D8CE008CF870 /* ForecastTableViewCell.swift in Sources */,
 				5B4ADFA726414959006DB0FC /* LocationListViewController.swift in Sources */,
 				5BCDA1D92641C1CE000F4F80 /* UIButton+Addition.swift in Sources */,

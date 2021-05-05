@@ -14,7 +14,8 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     //MARK: Variables
     
     var apiResponse: OneCallResponse? = nil
-    var geoResponse: ReverseGeocodingResponse? = nil
+    var revGeoResponse: ReverseGeocodingResponse? = nil
+    var geoResponse: GeocodingResponse? = nil
     
     //MARK: Constants
     
@@ -90,10 +91,18 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     }
     
     func networkServiceDidGetLocationName(response: ReverseGeocodingResponse?) {
-        self.geoResponse = response
+        self.revGeoResponse = response
         
         self.cityNameLable.text = response?.geocodingData.first?.name ?? "Sin City"
     }
+    
+    func networkServiceDidGetLocationCoordinates(response: GeocodingResponse?) {
+        self.geoResponse = response
+        NetworkService.shared.latitude = String(response?.geocodingData.first?.lat ?? 0.0)
+        NetworkService.shared.longitude = String(response?.geocodingData.first?.lon ?? 0.0)
+        getWeatherAndUpdateView()
+    }
+    
     
     
     
