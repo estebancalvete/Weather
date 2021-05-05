@@ -26,12 +26,13 @@ class SearchLocationViewController: UIViewController {
     //MARK: IBActions
     
     @IBAction func setLocationButtonDidTouchUpInside(_ sender: Any) {
-        let textToSearch = "Madrid"
-        NetworkService.shared.cityName = textToSearch
-        NetworkService.shared.getLocationCoordinates()
-        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func selectButtonDidTouchUpInside(_ sender: Any) {
+        if let textToSearch: String = locationInputField.text {
+            NetworkService.shared.cityName = textToSearch
+            NetworkService.shared.getLocationCoordinates()
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     //MARK: Functions
