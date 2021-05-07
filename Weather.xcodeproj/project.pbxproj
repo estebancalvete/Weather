@@ -20,6 +20,7 @@
 		5B5F2042263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F2041263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift */; };
 		5B6B204B2635B4AB003C49EB /* ReverseGeocodingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B204A2635B4AB003C49EB /* ReverseGeocodingResponse.swift */; };
 		5B9604402631D8CE008CF870 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */; };
+		5BB7B7182645B5BA001558BE /* LocationListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7B7172645B5BA001558BE /* LocationListTableViewCell.swift */; };
 		5BCDA1D52641B904000F4F80 /* SearchLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D42641B904000F4F80 /* SearchLocation.storyboard */; };
 		5BCDA1D72641B929000F4F80 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D62641B929000F4F80 /* SearchLocationViewController.swift */; };
 		5BCDA1D92641C1CE000F4F80 /* UIButton+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */; };
@@ -42,6 +43,7 @@
 		5B5F2041263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B6B204A2635B4AB003C49EB /* ReverseGeocodingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodingResponse.swift; sourceTree = "<group>"; };
 		5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
+		5BB7B7172645B5BA001558BE /* LocationListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListTableViewCell.swift; sourceTree = "<group>"; };
 		5BCDA1D42641B904000F4F80 /* SearchLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchLocation.storyboard; sourceTree = "<group>"; };
 		5BCDA1D62641B929000F4F80 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Addition.swift"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				5B5F2041263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift */,
 				5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */,
 				5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */,
+				5BB7B7172645B5BA001558BE /* LocationListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				5B55D8D8262750C50033DCE4 /* NetworkService.swift in Sources */,
 				5BCDA1D72641B929000F4F80 /* SearchLocationViewController.swift in Sources */,
 				5B55D8C226274FE90033DCE4 /* SceneDelegate.swift in Sources */,
+				5BB7B7182645B5BA001558BE /* LocationListTableViewCell.swift in Sources */,
 				5B113F1B2629EB7300560303 /* OneCallResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

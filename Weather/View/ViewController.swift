@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, CLLocationManagerDelegate, NetworkServiceDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, CLLocationManagerDelegate, NetworkServiceDelegate, LocationListViewControllerDelegate {
     
 
     //MARK: Variables
@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     var apiResponse: OneCallResponse? = nil
     var revGeoResponse: ReverseGeocodingResponse? = nil
     var geoResponse: GeocodingResponse? = nil
+    var newtworkService: NetworkService? = nil
     
     //MARK: Constants
     
@@ -41,7 +42,8 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         
         hourlyForecastCollection.dataSource = self
         
-        NetworkService.shared.delegate = self
+        newtworkService = NetworkService()
+        newtworkService?.delegate = self
         
         configureLocation()
         
@@ -50,7 +52,7 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     //MARK: IBActions
     
     @IBAction func locationListButtonDidTouchUpInside(_ sender: Any) {
-        let locListViewContr = LocationListViewController.create()
+        let locListViewContr = LocationListViewController.create(delegate: self)
         self.present(locListViewContr, animated: true, completion: nil)
         // If we are using a Navigation Controller:
         // self.navigationController?.present(locListViewContr, animated: true, completion: nil)
@@ -70,8 +72,8 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     
     
     private func getWeatherAndUpdateView() {
-        NetworkService.shared.getWeather()
-        NetworkService.shared.getLocationName()
+        newtworkService?.getWeather()
+        newtworkService?.getLocationName()
     }
     
     //MARK: NetworkServiceDelegate Functions
@@ -98,8 +100,8 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     
     func networkServiceDidGetLocationCoordinates(response: GeocodingResponse?) {
         self.geoResponse = response
-        NetworkService.shared.latitude = String(response?.geocodingData.first?.lat ?? 0.0)
-        NetworkService.shared.longitude = String(response?.geocodingData.first?.lon ?? 0.0)
+        newtworkService?.latitude = String(response?.geocodingData.first?.lat ?? 0.0)
+        newtworkService?.longitude = String(response?.geocodingData.first?.lon ?? 0.0)
         getWeatherAndUpdateView()
     }
     
@@ -111,11 +113,11 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
                 
-                manager.stopUpdatingLocation()
+        manager.stopUpdatingLocation()
                 
-                NetworkService.shared.latitude = String(locValue.latitude)
-                NetworkService.shared.longitude = String(locValue.longitude)
-                getWeatherAndUpdateView()
+        newtworkService?.latitude = String(locValue.latitude)
+        newtworkService?.longitude = String(locValue.longitude)
+        getWeatherAndUpdateView()
     }
     
     
@@ -146,6 +148,14 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
             cell.configure(data: apiResponse.hourly[indexPath.row])
         }
         return cell
+    }
+    
+    //MARK: LocationListViewControllerDelegate Functions
+    
+    func locationListViewControllerDidSelectCoordinate(coordinate: CLLocationCoordinate2D) {
+        newtworkService?.latitude = NSNumber(value: coordinate.latitude).stringValue
+        newtworkService?.longitude = NSNumber(value: coordinate.longitude).stringValue
+        getWeatherAndUpdateView()
     }
 }
 

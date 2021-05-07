@@ -30,8 +30,6 @@ class NetworkService {
 
     //MARK: Functions
 
-    static let shared = NetworkService()
-
 
     func getWeather() {
         if let url = configureUrl() {
