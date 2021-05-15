@@ -23,14 +23,12 @@ class NetworkService {
     var cityName: String = ""
     let urlString: String = "https://api.openweathermap.org/data/2.5/onecall?lat=%@&lon=%@&appid=%@&units=metric"
     let locationUrlString: String = "https://api.openweathermap.org/geo/1.0/reverse?lat=%@&lon=%@&limit=1&appid=%@"
-    let coordinatesUrlStirn: String = "https://api.openweathermap.org/geo/1.0/direct?q=%@&limit=5&appid=%@"
+    let coordinatesUrlString: String = "https://api.openweathermap.org/geo/1.0/direct?q=%@&limit=5&appid=%@"
     let session = URLSession(configuration: .default)
     
     weak var delegate: NetworkServiceDelegate?
 
     //MARK: Functions
-
-    static let shared = NetworkService()
 
 
     func getWeather() {
@@ -103,7 +101,7 @@ class NetworkService {
         return URL(string: result)
     }
     private func configureCoordinatesUrl () -> URL? {
-        let result: String = String(format: coordinatesUrlStirn, cityName, apiKey)
+        let result: String = String(format: coordinatesUrlString, cityName, apiKey)
         return URL(string: result)
     }
 }

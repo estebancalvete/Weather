@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     var apiResponse: OneCallResponse? = nil
     var revGeoResponse: ReverseGeocodingResponse? = nil
     var geoResponse: GeocodingResponse? = nil
+    var networkService: NetworkService? = nil
     
     //MARK: Constants
     
@@ -38,11 +39,9 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         super.viewDidLoad()
         
         forecastWeatherTable.dataSource = self
-        
         hourlyForecastCollection.dataSource = self
-        
-        NetworkService.shared.delegate = self
-        
+        networkService = NetworkService()
+        networkService?.delegate = self
         configureLocation()
         
     }
@@ -70,8 +69,8 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     
     
     private func getWeatherAndUpdateView() {
-        NetworkService.shared.getWeather()
-        NetworkService.shared.getLocationName()
+        networkService?.getWeather()
+        networkService?.getLocationName()
     }
     
     //MARK: NetworkServiceDelegate Functions
@@ -97,10 +96,7 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     }
     
     func networkServiceDidGetLocationCoordinates(response: GeocodingResponse?) {
-        self.geoResponse = response
-        NetworkService.shared.latitude = String(response?.geocodingData.first?.lat ?? 0.0)
-        NetworkService.shared.longitude = String(response?.geocodingData.first?.lon ?? 0.0)
-        getWeatherAndUpdateView()
+        // DO NOTHING
     }
     
     
@@ -111,11 +107,11 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
                 
-                manager.stopUpdatingLocation()
+            manager.stopUpdatingLocation()
                 
-                NetworkService.shared.latitude = String(locValue.latitude)
-                NetworkService.shared.longitude = String(locValue.longitude)
-                getWeatherAndUpdateView()
+            networkService?.latitude = String(locValue.latitude)
+            networkService?.longitude = String(locValue.longitude)
+            getWeatherAndUpdateView()
     }
     
     

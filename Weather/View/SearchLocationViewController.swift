@@ -8,7 +8,14 @@
 import UIKit
 import MapKit
 
-class SearchLocationViewController: UIViewController {
+class SearchLocationViewController: UIViewController, NetworkServiceDelegate {
+    
+    
+    
+    //MARK: Variables
+    
+    var networkService: NetworkService? = nil
+    
     
     //MARK: IBOultets
     
@@ -20,6 +27,8 @@ class SearchLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkService = NetworkService()
+        networkService?.delegate = self
         setLocationButton.round()
     }
     
@@ -29,10 +38,26 @@ class SearchLocationViewController: UIViewController {
     }
     @IBAction func selectButtonDidTouchUpInside(_ sender: Any) {
         if let textToSearch: String = locationInputField.text {
-            NetworkService.shared.cityName = textToSearch
-            NetworkService.shared.getLocationCoordinates()
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            networkService?.cityName = textToSearch
+            networkService?.getLocationCoordinates()
         }
+    }
+    
+    //MARK: LocationServiceDelegate Functions
+    
+    func networkServiceDidGetWeatherData(response: OneCallResponse?) {
+        // DO NOTHING
+    }
+    
+    func networkServiceDidGetLocationName(response: ReverseGeocodingResponse?) {
+        // DO NOTHING
+    }
+    
+    func networkServiceDidGetLocationCoordinates(response: GeocodingResponse?) {
+        guard let coordinates = response?.geocodingData.first else { return }
+        let mapCenter = CLLocationCoordinate2D(latitude: coordinates.lat, longitude: coordinates.lon)
+        let mapRegion = MKCoordinateRegion(center: mapCenter, latitudinalMeters: 25000, longitudinalMeters: 25000)
+        mapView.setRegion(mapRegion, animated: true)
     }
     
     //MARK: Functions

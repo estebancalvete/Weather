@@ -35,14 +35,4 @@ class LocationListViewController: UIViewController {
         let viewController = storyboard.instantiateInitialViewController() as! LocationListViewController
         return viewController
     }
-
-    //MARK: UITableViewDataSource Functions
-    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
 }
