@@ -8,6 +8,10 @@
 import UIKit
 import MapKit
 
+protocol SearchLocationViewControllerDelegate: AnyObject {
+    func searchLocationViewControllerDidGetCoordinates(response: CLLocationCoordinate2D)
+}
+
 class SearchLocationViewController: UIViewController, NetworkServiceDelegate {
     
     
@@ -15,6 +19,7 @@ class SearchLocationViewController: UIViewController, NetworkServiceDelegate {
     //MARK: Variables
     
     var networkService: NetworkService? = nil
+    weak var delegate: SearchLocationViewControllerDelegate?
     
     
     //MARK: IBOultets
@@ -35,6 +40,8 @@ class SearchLocationViewController: UIViewController, NetworkServiceDelegate {
     //MARK: IBActions
     
     @IBAction func setLocationButtonDidTouchUpInside(_ sender: Any) {
+        delegate?.searchLocationViewControllerDidGetCoordinates(response: mapView.centerCoordinate)
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func selectButtonDidTouchUpInside(_ sender: Any) {
         if let textToSearch: String = locationInputField.text {
@@ -62,9 +69,10 @@ class SearchLocationViewController: UIViewController, NetworkServiceDelegate {
     
     //MARK: Functions
     
-    public static func create() -> SearchLocationViewController {
+    public static func create(delegate: SearchLocationViewControllerDelegate) -> SearchLocationViewController {
         let storyboard = UIStoryboard(name: "SearchLocation", bundle: Bundle(for: self))
         let viewController = storyboard.instantiateInitialViewController() as! SearchLocationViewController
+        viewController.delegate = delegate
         return viewController
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B113F1B2629EB7300560303 /* OneCallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B113F1A2629EB7300560303 /* OneCallResponse.swift */; };
+		5B1FD5EB2651A7AC000E8829 /* LocationListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1FD5EA2651A7AC000E8829 /* LocationListTableViewCell.swift */; };
 		5B4ADFA52641491F006DB0FC /* LocationList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4ADFA42641491F006DB0FC /* LocationList.storyboard */; };
 		5B4ADFA726414959006DB0FC /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ADFA626414959006DB0FC /* LocationListViewController.swift */; };
 		5B55D8C026274FE90033DCE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55D8BF26274FE90033DCE4 /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		5B113F1A2629EB7300560303 /* OneCallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCallResponse.swift; sourceTree = "<group>"; };
+		5B1FD5EA2651A7AC000E8829 /* LocationListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListTableViewCell.swift; sourceTree = "<group>"; };
 		5B4ADFA42641491F006DB0FC /* LocationList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationList.storyboard; sourceTree = "<group>"; };
 		5B4ADFA626414959006DB0FC /* LocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
 		5B55D8BC26274FE90033DCE4 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 				5B5F2041263C6FCF003ED472 /* HourlyForecastCollectionViewCell.swift */,
 				5B96043F2631D8CE008CF870 /* ForecastTableViewCell.swift */,
 				5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */,
+				5B1FD5EA2651A7AC000E8829 /* LocationListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				5B55D8D8262750C50033DCE4 /* NetworkService.swift in Sources */,
 				5BCDA1D72641B929000F4F80 /* SearchLocationViewController.swift in Sources */,
 				5B55D8C226274FE90033DCE4 /* SceneDelegate.swift in Sources */,
+				5B1FD5EB2651A7AC000E8829 /* LocationListTableViewCell.swift in Sources */,
 				5B113F1B2629EB7300560303 /* OneCallResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,8 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, CLLocationManagerDelegate, NetworkServiceDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, CLLocationManagerDelegate, NetworkServiceDelegate, LocationListViewControllerDelegate {
+    
     
 
     //MARK: Variables
@@ -49,7 +50,7 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     //MARK: IBActions
     
     @IBAction func locationListButtonDidTouchUpInside(_ sender: Any) {
-        let locListViewContr = LocationListViewController.create()
+        let locListViewContr = LocationListViewController.create(delegate: self)
         self.present(locListViewContr, animated: true, completion: nil)
         // If we are using a Navigation Controller:
         // self.navigationController?.present(locListViewContr, animated: true, completion: nil)
@@ -142,6 +143,14 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
             cell.configure(data: apiResponse.hourly[indexPath.row])
         }
         return cell
+    }
+    
+    //MARK: LocationListViewControllerDelegate Functions
+    
+    func locationListViewControllerDidSelectCity(city: GeocodingData) {
+        networkService?.latitude = NSNumber(value: city.lat).stringValue
+        networkService?.longitude = NSNumber(value: city.lon).stringValue
+        getWeatherAndUpdateView()
     }
 }
 

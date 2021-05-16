@@ -8,11 +8,16 @@
 import UIKit
 
 class HourlyForecastCollectionViewCell: UICollectionViewCell {
+    
+    //MARK: IBOutlets
+    
     @IBOutlet weak var hourOfDayLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var hourlyTempLabel: UILabel!
     
-    func configure (data: HourlyWeather) {
+    //MARK: Functions
+    
+    func configure(data: HourlyWeather) {
         
         hourlyTempLabel.text = String(format: "%.0f", data.temp) + " ºC"
         weatherImage.image = UIImage(named: data.weather.first?.icon ?? "01d")

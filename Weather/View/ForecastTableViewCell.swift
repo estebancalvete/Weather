@@ -8,12 +8,17 @@
 import UIKit
 
 class ForecastTableViewCell: UITableViewCell{
+    
+    //MARK: IBOutlets
+    
     @IBOutlet weak var dayOfWeekLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     
-    func configure (data: DailyWeather) {
+    //MARK: Functions
+    
+    func configure(data: DailyWeather) {
         
         maxTempLabel.text = String(format: "%.0f", data.temp.max) + " ºC"
         minTempLabel.text = String(format: "%.0f", data.temp.min) + " ºC"
