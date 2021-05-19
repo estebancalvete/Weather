@@ -1,13 +1,8 @@
-//
-//  ForecastTableViewCell.swift
-//  Weather
-//
-//  Created by Esteban Calvete Iglesias on 22/04/2021.
-//
 
 import UIKit
 
 class ForecastTableViewCell: UITableViewCell{
+    
     
     //MARK: IBOutlets
     
@@ -16,10 +11,10 @@ class ForecastTableViewCell: UITableViewCell{
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     
+    
     //MARK: Functions
     
     func configure(data: DailyWeather) {
-        
         maxTempLabel.text = String(format: "%.0f", data.temp.max) + " ºC"
         minTempLabel.text = String(format: "%.0f", data.temp.min) + " ºC"
         weatherImageView.image = UIImage(named: data.weather.first?.icon ?? "01d")

@@ -1,9 +1,3 @@
-//
-//  NetworkService.swift
-//  Weather
-//
-//  Created by Esteban Calvete Iglesias on 14/04/2021.
-//
 
 import Foundation
 
@@ -14,6 +8,7 @@ protocol NetworkServiceDelegate: AnyObject {
 }
 
 class NetworkService {
+    
     
     //MARK: Variables
 
@@ -28,8 +23,8 @@ class NetworkService {
     
     weak var delegate: NetworkServiceDelegate?
 
+    
     //MARK: Functions
-
 
     func getWeather() {
         if let url = configureUrl() {
@@ -48,6 +43,7 @@ class NetworkService {
             task.resume()
         }
     }
+    
     func getLocationName() {
         if let url = configureLocationUrl() {
             let task = session.dataTask(with: url) { data, response, error in

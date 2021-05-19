@@ -1,23 +1,15 @@
-//
-//  ViewController.swift
-//  Weather
-//
-//  Created by Esteban Calvete Iglesias on 14/04/2021.
-//
 
 import UIKit
 import CoreLocation
 
 class ViewController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, CLLocationManagerDelegate, NetworkServiceDelegate, LocationListViewControllerDelegate {
     
-    
 
     //MARK: Variables
     
     var apiResponse: OneCallResponse? = nil
-    var revGeoResponse: ReverseGeocodingResponse? = nil
-    var geoResponse: GeocodingResponse? = nil
     var networkService: NetworkService? = nil
+    
     
     //MARK: Constants
     
@@ -38,16 +30,15 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         forecastWeatherTable.dataSource = self
         hourlyForecastCollection.dataSource = self
         networkService = NetworkService()
         networkService?.delegate = self
         configureLocation()
-        
     }
     
     //MARK: IBActions
+    
     
     @IBAction func locationListButtonDidTouchUpInside(_ sender: Any) {
         let locListViewContr = LocationListViewController.create(delegate: self)
@@ -55,6 +46,7 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         // If we are using a Navigation Controller:
         // self.navigationController?.present(locListViewContr, animated: true, completion: nil)
     }
+    
     
     //MARK: Functions
     
@@ -68,7 +60,6 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         }
     }
     
-    
     private func getWeatherAndUpdateView() {
         networkService?.getWeather()
         networkService?.getLocationName()
@@ -78,11 +69,8 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     
     func networkServiceDidGetWeatherData(response: OneCallResponse?) {
         self.apiResponse = response
-        
         self.forecastWeatherTable.reloadData()
-        
         self.hourlyForecastCollection.reloadData()
-        
         self.currentTempLable.text = String(format: "%.0f", response?.current.temp ?? "T") + " ºC"
         self.weatherTitleLable.text = (response?.current.weather[0].description)?.capitalized ?? "Weather Description"
         if let iconCode = response?.current.weather[0].icon {
@@ -91,8 +79,6 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     }
     
     func networkServiceDidGetLocationName(response: ReverseGeocodingResponse?) {
-        self.revGeoResponse = response
-        
         self.cityNameLable.text = response?.geocodingData.first?.name ?? "Sin City"
     }
     
@@ -101,15 +87,11 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     }
     
     
-    
-    
     //MARK: CCLocationDelegate Functions
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-                
             manager.stopUpdatingLocation()
-                
             networkService?.latitude = String(locValue.latitude)
             networkService?.longitude = String(locValue.longitude)
             getWeatherAndUpdateView()
@@ -130,6 +112,7 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         return cell
     }
     
+    
     //MARK: UICollectionViewDataSource Functions
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -144,6 +127,7 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         }
         return cell
     }
+    
     
     //MARK: LocationListViewControllerDelegate Functions
     

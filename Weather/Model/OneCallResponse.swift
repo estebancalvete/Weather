@@ -1,9 +1,3 @@
-//
-//  OneCallResponse.swift
-//  Weather
-//
-//  Created by Esteban Calvete Iglesias on 16/04/2021.
-//
 
 import Foundation
 
@@ -61,7 +55,6 @@ class HourlyWeather: NSObject, Codable {
     let rain: AverageRain?
     let snow: AverageSnow?
     let weather: [WeatherInfo]
-
 }
 
 class DailyWeather: Codable {

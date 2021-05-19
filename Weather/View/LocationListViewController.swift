@@ -1,9 +1,3 @@
-//
-//  LocationListViewController.swift
-//  Weather
-//
-//  Created by Esteban Calvete Iglesias on 04/05/2021.
-//
 
 import UIKit
 import MapKit
@@ -21,9 +15,11 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
     var cityList: [GeocodingData] = []
     weak var delegate: LocationListViewControllerDelegate?
     
+    
     //MARK: IBOultets
     
     @IBOutlet weak var locationListTableView: UITableView!
+    
     
     //MARK: Live Cicle
     
@@ -35,12 +31,14 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
         networkService?.delegate = self
     }
     
+    
     //MARK: IBActions
     
     @IBAction func searchLocationButtonDidTouchUpInside(_ sender: Any) {
         let searchLocationViewController = SearchLocationViewController.create(delegate: self)
         self.present(searchLocationViewController, animated: true, completion: nil)
     }
+    
     
     //MARK: Functions
     
@@ -51,6 +49,7 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
         return viewController
     }
     
+    
     //MARK: SearchLocationViewControllerDelegate Functions
     
     func searchLocationViewControllerDidGetCoordinates(response: CLLocationCoordinate2D) {
@@ -58,6 +57,7 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
         networkService?.longitude = NSNumber(value: response.longitude).stringValue
         networkService?.getLocationName()
     }
+    
     
     //MARK: NetworkServiceDelegate Functions
     
@@ -75,6 +75,7 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
         // DO NOTHING
     }
     
+    
     //MARK: UITableViewDataSource Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,6 +89,7 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
         cell.configure(cityName: cityName, countryCode: countryCode)
         return cell
     }
+    
     
     //MARK: UITableViewDelegate Functions
     

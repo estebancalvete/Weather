@@ -1,9 +1,3 @@
-//
-//  SearchLocationViewController.swift
-//  Weather
-//
-//  Created by Esteban Calvete Iglesias on 04/05/2021.
-//
 
 import UIKit
 import MapKit
@@ -12,8 +6,7 @@ protocol SearchLocationViewControllerDelegate: AnyObject {
     func searchLocationViewControllerDidGetCoordinates(response: CLLocationCoordinate2D)
 }
 
-class SearchLocationViewController: UIViewController, NetworkServiceDelegate {
-    
+class SearchLocationViewController: UIViewController, UITextFieldDelegate, NetworkServiceDelegate {
     
     
     //MARK: Variables
@@ -28,14 +21,17 @@ class SearchLocationViewController: UIViewController, NetworkServiceDelegate {
     @IBOutlet weak var locationInputField: UITextField!
     @IBOutlet weak var setLocationButton: UIButton!
     
+    
     //MARK: Live Cicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationInputField.delegate = self
         networkService = NetworkService()
         networkService?.delegate = self
         setLocationButton.round()
     }
+    
     
     //MARK: IBActions
     
@@ -48,6 +44,13 @@ class SearchLocationViewController: UIViewController, NetworkServiceDelegate {
             networkService?.cityName = textToSearch
             networkService?.getLocationCoordinates()
         }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let textToSearch: String = locationInputField.text {
+            networkService?.cityName = textToSearch
+            networkService?.getLocationCoordinates()
+        }
+        return true
     }
     
     //MARK: LocationServiceDelegate Functions
@@ -66,6 +69,7 @@ class SearchLocationViewController: UIViewController, NetworkServiceDelegate {
         let mapRegion = MKCoordinateRegion(center: mapCenter, latitudinalMeters: 25000, longitudinalMeters: 25000)
         mapView.setRegion(mapRegion, animated: true)
     }
+    
     
     //MARK: Functions
     

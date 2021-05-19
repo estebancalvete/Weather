@@ -1,9 +1,3 @@
-//
-//  LocationListTableViewCell.swift
-//  Weather
-//
-//  Created by Esteban Calvete Iglesias on 16/05/2021.
-//
 
 import UIKit
 
@@ -14,6 +8,7 @@ class LocationListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var countryCodeLabel: UILabel!
+    
     
     //MARK: Functions
     

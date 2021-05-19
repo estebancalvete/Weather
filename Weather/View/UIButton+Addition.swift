@@ -1,9 +1,3 @@
-//
-//  UIButton+Addition.swift
-//  Weather
-//
-//  Created by Esteban Calvete Iglesias on 04/05/2021.
-//
 
 import UIKit
 

@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -198,22 +199,16 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list.dash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Xbv-RC-OB0">
-                                <rect key="frame" x="300" y="778.33333333333337" width="35" height="28.666666666666629"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2S-9t-stW">
+                                <rect key="frame" x="325" y="775" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="H2c-Wp-6GR"/>
-                                    <constraint firstAttribute="height" constant="35" id="pwi-Pa-yA6"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2S-9t-stW">
-                                <rect key="frame" x="290" y="775" width="70" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="UDp-Nt-RfT"/>
+                                    <constraint firstAttribute="width" constant="35" id="UDp-Nt-RfT"/>
                                     <constraint firstAttribute="height" constant="35" id="bwI-hT-0MU"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="location.fill" catalog="system"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large"/>
+                                </state>
                                 <connections>
                                     <action selector="locationListButtonDidTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jkm-ek-MOa"/>
                                 </connections>
@@ -237,11 +232,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y2S-9t-stW" secondAttribute="trailing" constant="30" id="YsW-2r-vNX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KEO-6I-1fi" secondAttribute="trailing" id="ame-CZ-grj"/>
                             <constraint firstItem="1l1-LO-A4G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b9y-KL-5SP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Xbv-RC-OB0" secondAttribute="bottom" id="cl8-Gf-2oA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7b7-J5-Bhp" secondAttribute="trailing" id="ejJ-U7-Ryz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1l1-LO-A4G" secondAttribute="trailing" id="h40-Ub-rD6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qsi-kP-G7A" secondAttribute="bottom" constant="40" id="mcS-6v-hkC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xbv-RC-OB0" secondAttribute="trailing" constant="55" id="nR6-OL-cPm"/>
                             <constraint firstItem="7b7-J5-Bhp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="o6p-aN-dl2"/>
                             <constraint firstItem="Tta-5B-SYO" firstAttribute="top" secondItem="1l1-LO-A4G" secondAttribute="bottom" constant="10" id="uIZ-ZG-Eis"/>
                         </constraints>
@@ -262,8 +255,7 @@
     </scenes>
     <resources>
         <image name="01d" width="512" height="512"/>
-        <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="location.fill" catalog="system" width="128" height="121"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

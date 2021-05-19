@@ -1,9 +1,3 @@
-//
-//  ReverseGeocodingResponse.swift
-//  Weather
-//
-//  Created by Esteban Calvete Iglesias on 25/04/2021.
-//
 
 import Foundation
 
