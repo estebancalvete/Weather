@@ -25,6 +25,7 @@
 		5BCDA1D72641B929000F4F80 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D62641B929000F4F80 /* SearchLocationViewController.swift */; };
 		5BCDA1D92641C1CE000F4F80 /* UIButton+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */; };
 		5BCE87202642EA2C003299A6 /* GeocodingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCE871F2642EA2B003299A6 /* GeocodingResponse.swift */; };
+		5BE4CDCA265C1DD1009A80CC /* LocationPersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE4CDC9265C1DD1009A80CC /* LocationPersistent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		5BCDA1D62641B929000F4F80 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		5BCDA1D82641C1CE000F4F80 /* UIButton+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Addition.swift"; sourceTree = "<group>"; };
 		5BCE871F2642EA2B003299A6 /* GeocodingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingResponse.swift; sourceTree = "<group>"; };
+		5BE4CDC9265C1DD1009A80CC /* LocationPersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPersistent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				5B113F1A2629EB7300560303 /* OneCallResponse.swift */,
 				5B6B204A2635B4AB003C49EB /* ReverseGeocodingResponse.swift */,
 				5BCE871F2642EA2B003299A6 /* GeocodingResponse.swift */,
+				5BE4CDC9265C1DD1009A80CC /* LocationPersistent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				5B55D8C226274FE90033DCE4 /* SceneDelegate.swift in Sources */,
 				5B1FD5EB2651A7AC000E8829 /* LocationListTableViewCell.swift in Sources */,
 				5B113F1B2629EB7300560303 /* OneCallResponse.swift in Sources */,
+				5BE4CDCA265C1DD1009A80CC /* LocationPersistent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
