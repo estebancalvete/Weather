@@ -27,21 +27,12 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let decoder = JSONDecoder()
-        let defaults = UserDefaults.standard
-        if let data = defaults.data(forKey: "SavedLocations") {
-            let array = try? decoder.decode(LocationPersistentList.self, from: data)
-
+        if let data = UserDefaults.standard.value(forKey: "SavedLocations") as? Data {
+            let array = try? JSONDecoder().decode(Array<LocationPersistent>.self, from: data)
             if array != nil {
-                cityListPersistent = array!.elements
+                cityListPersistent = array!
             }
         }
-//
-//
-//        let defaults = UserDefaults.standard
-//        if let locs = defaults.object(forKey: "Locations") as? [String] {
-//            cityListStrings = locs
-//        }
         
         locationListTableView.dataSource = self
         locationListTableView.delegate = self
@@ -70,48 +61,26 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
     //MARK: Private functions
     
     private func saveOnUserDefaults(geoData: GeocodingData) {
-        let defaults = UserDefaults.standard
-        
         let locationPersistent = LocationPersistent(name: geoData.name,
-                                                    state: geoData.state ?? "",
+                                                    country: geoData.country,
                                                     lat: geoData.lat,
                                                     lon: geoData.lon)
-        var locationPeristentList: LocationPersistentList? = nil
+
+        var locationPeristents: [LocationPersistent] = []
         
-        let decoder = JSONDecoder()
-        if let data = defaults.data(forKey: "SavedLocations") {
-            let array = try? decoder.decode(LocationPersistentList.self, from: data)
+        if let data = UserDefaults.standard.value(forKey: "SavedLocations") as? Data {
+            let array = try? JSONDecoder().decode(Array<LocationPersistent>.self, from: data)
 
             if array != nil {
-                var list = array!.elements
-                list.append(locationPersistent)
-                locationPeristentList = LocationPersistentList(elements: list)
+                locationPeristents.append(contentsOf: array!)
+                locationPeristents.append(locationPersistent)
             } else {
-                locationPeristentList = LocationPersistentList(elements: [locationPersistent])
+                locationPeristents.append(locationPersistent)
             }
         }
+        UserDefaults.standard.set(try? JSONEncoder().encode(locationPeristents), forKey: "SavedLocations")
         
-        let encoder = JSONEncoder()
-        if let data = try? encoder.encode(locationPeristentList) {
-            defaults.set(data, forKey: "SavedLocations")
-        }
-        
-        
-        
-        
-//        var locations = defaults.object(forKey: "Locations") as? [String]
-//        if locations != nil {
-//            locations?.append(geoData.name)
-//        } else {
-//            locations = [geoData.name]
-//        }
-//
-//        defaults.set(locations, forKey: "Locations")
-        
-        if let elements = locationPeristentList?.elements {
-            cityListPersistent = elements
-        }
-        
+        cityListPersistent = locationPeristents
     }
     
     
@@ -153,7 +122,7 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationListTableViewCell", for: indexPath) as! LocationListTableViewCell
         let cityName = cityListPersistent[indexPath.row].name
-        let countryCode = cityListPersistent[indexPath.row].state
+        let countryCode = cityListPersistent[indexPath.row].country
         cell.configure(cityName: cityName, countryCode: countryCode)
         return cell
     }

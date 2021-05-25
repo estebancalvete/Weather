@@ -16,13 +16,13 @@ struct LocationPersistentList: Codable {
 
 struct LocationPersistent: Codable {
     let name: String
-    let state: String
+    let country: String
     let lat: Double
     let lon: Double
     
-    init(name: String, state: String, lat: Double, lon: Double) {
+    init(name: String, country: String, lat: Double, lon: Double) {
         self.name = name
-        self.state = state
+        self.country = country
         self.lat = lat
         self.lon = lon
     }
