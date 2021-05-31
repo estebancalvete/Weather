@@ -83,7 +83,10 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     }
     
     func networkServiceDidGetLocationCoordinates(response: GeocodingResponse?) {
-        // DO NOTHING
+        guard let response = response?.geocodingData.first else { return }
+        networkService?.latitude = String(response.lat)
+        networkService?.longitude = String(response.lon)
+        getWeatherAndUpdateView()
     }
     
     
@@ -131,10 +134,9 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     
     //MARK: LocationListViewControllerDelegate Functions
     
-    func locationListViewControllerDidSelectCity(city: GeocodingData) {
-        networkService?.latitude = NSNumber(value: city.lat).stringValue
-        networkService?.longitude = NSNumber(value: city.lon).stringValue
-        getWeatherAndUpdateView()
+    func locationListViewControllerDidSelectCity(city: String) {
+        networkService?.cityName = city.folding(options: .diacriticInsensitive, locale: .current)
+        networkService?.getLocationCoordinates()
     }
 }
 

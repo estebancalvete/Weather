@@ -41,13 +41,13 @@ class SearchLocationViewController: UIViewController, UITextFieldDelegate, Netwo
     }
     @IBAction func selectButtonDidTouchUpInside(_ sender: Any) {
         if let textToSearch: String = locationInputField.text {
-            networkService?.cityName = textToSearch
+            networkService?.cityName = textToSearch.folding(options: .diacriticInsensitive, locale: .current)
             networkService?.getLocationCoordinates()
         }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let textToSearch: String = locationInputField.text {
-            networkService?.cityName = textToSearch
+            networkService?.cityName = textToSearch.folding(options: .diacriticInsensitive, locale: .current)
             networkService?.getLocationCoordinates()
         }
         return true
