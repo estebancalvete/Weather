@@ -3,7 +3,7 @@ import UIKit
 import MapKit
 
 protocol LocationListViewControllerDelegate: AnyObject {
-    func locationListViewControllerDidSelectCity(city: String)
+    func locationListViewControllerDidSelectCity(city: GeocodingData)
 }
 
 class LocationListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NetworkServiceDelegate, SearchLocationViewControllerDelegate {
@@ -12,7 +12,7 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
     //MARK: Variables
     
     var networkService: NetworkService? = nil
-    var cityListPersistent: [String] = []
+    var cityListPersistent: [GeocodingData] = []
     weak var delegate: LocationListViewControllerDelegate?
     
     
@@ -25,9 +25,11 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let defaults = UserDefaults.standard
-        if let locations = defaults.object(forKey: "Locations") as? [String] {
-            cityListPersistent = locations
+        if let data = UserDefaults.standard.value(forKey: "SavedLocations") as? Data {
+            let array = try? JSONDecoder().decode(Array<GeocodingData>.self, from: data)
+            if array != nil {
+                cityListPersistent = array!
+            }
         }
         locationListTableView.dataSource = self
         locationListTableView.delegate = self
@@ -57,14 +59,18 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
     //MARK: Private functions
     
     private func saveOnUserDefaults(cityDetails: GeocodingData) {
-        let defaults = UserDefaults.standard
-        var locations = defaults.object(forKey: "Locations") as? [String]
-        if locations != nil {
-            locations?.append(cityDetails.name)
-        } else {
-            locations = [cityDetails.name]
+        var locationPersistents: [GeocodingData] = []
+        if let data = UserDefaults.standard.value(forKey: "SavedLocations") as? Data {
+            let array = try? JSONDecoder().decode(Array<GeocodingData>.self, from: data)
+            if array != nil {
+                locationPersistents.append(contentsOf: array!)
+                locationPersistents.append(cityDetails)
+            } else {
+                locationPersistents.append(cityDetails)
+            }
+            UserDefaults.standard.set(try? JSONEncoder().encode(locationPersistents), forKey: "SavedLocations")
+            cityListPersistent = locationPersistents
         }
-        defaults.set(locations, forKey: "Locations")
     }
     
     
@@ -87,8 +93,6 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
     func networkServiceDidGetLocationName(response: ReverseGeocodingResponse?) {
         guard let cityDetails = response?.geocodingData.first else { return }
         saveOnUserDefaults(cityDetails: cityDetails)
-        cityListPersistent.append(cityDetails.name)
-        //cityList.append(cityDetails)
         locationListTableView.reloadData()
     }
     
@@ -105,8 +109,8 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationListTableViewCell", for: indexPath) as! LocationListTableViewCell
-        let cityName = cityListPersistent[indexPath.row]
-        let countryCode = "ES"
+        let cityName = cityListPersistent[indexPath.row].name
+        let countryCode = cityListPersistent[indexPath.row].country
         cell.configure(cityName: cityName, countryCode: countryCode)
         return cell
     }

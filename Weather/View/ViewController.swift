@@ -134,9 +134,10 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     
     //MARK: LocationListViewControllerDelegate Functions
     
-    func locationListViewControllerDidSelectCity(city: String) {
-        networkService?.cityName = city.folding(options: .diacriticInsensitive, locale: .current)
-        networkService?.getLocationCoordinates()
+    func locationListViewControllerDidSelectCity(city: GeocodingData) {
+        networkService?.longitude = String(city.lon)
+        networkService?.latitude = String(city.lat)
+        getWeatherAndUpdateView()
     }
 }
 
