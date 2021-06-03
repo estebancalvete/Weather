@@ -33,6 +33,7 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
         }
         locationListTableView.dataSource = self
         locationListTableView.delegate = self
+        locationListTableView.isEditing = true
         networkService = NetworkService()
         networkService?.delegate = self
     }
@@ -64,18 +65,39 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
             let array = try? JSONDecoder().decode(Array<GeocodingData>.self, from: data)
             if array != nil {
                 locationPersistents.append(contentsOf: array!)
-                locationPersistents.append(cityDetails)
-            } else {
-                locationPersistents.append(cityDetails)
             }
-        } else {
-            locationPersistents.append(cityDetails)
         }
-        UserDefaults.standard.set(try? JSONEncoder().encode(locationPersistents), forKey: "SavedLocations")
-        cityListPersistent = locationPersistents
+        
+        let isContained: Bool = locationPersistents.contains { (geoData) -> Bool in
+            return geoData.name == cityDetails.name
+        }
+        
+//        Equivalent
+//        let isContained: Bool = locationPersistents.contains(where: { $0.name == cityDetails.name })
+        
+        if !isContained {
+            locationPersistents.append(cityDetails)
+            UserDefaults.standard.set(try? JSONEncoder().encode(locationPersistents), forKey: "SavedLocations")
+            cityListPersistent = locationPersistents
+        }
     }
     
-    
+    private func deleteOnUserDefaults(cityDetails: GeocodingData) {
+        var locationPersistents: [GeocodingData] = []
+        if let data = UserDefaults.standard.value(forKey: "SavedLocations") as? Data {
+            let array = try? JSONDecoder().decode(Array<GeocodingData>.self, from: data)
+            if array != nil {
+                locationPersistents.append(contentsOf: array!)
+            }
+        }
+        
+        let newArray = locationPersistents.filter { (geoData) -> Bool in
+            return geoData.name != cityDetails.name
+        }
+
+        UserDefaults.standard.set(try? JSONEncoder().encode(newArray), forKey: "SavedLocations")
+        cityListPersistent = newArray
+    }
     
     //MARK: SearchLocationViewControllerDelegate Functions
     
@@ -124,5 +146,41 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
         let city = cityListPersistent[indexPath.row]
         delegate?.locationListViewControllerDidSelectCity(city: city)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            deleteOnUserDefaults(cityDetails: cityListPersistent[indexPath.row])
+            locationListTableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        var locationPersistents: [GeocodingData] = []
+        if let data = UserDefaults.standard.value(forKey: "SavedLocations") as? Data {
+            let array = try? JSONDecoder().decode(Array<GeocodingData>.self, from: data)
+            if array != nil {
+                locationPersistents.append(contentsOf: array!)
+            }
+        }
+        
+        let itemToMove = locationPersistents[sourceIndexPath.row]
+        locationPersistents.remove(at: sourceIndexPath.row)
+        locationPersistents.insert(itemToMove, at: destinationIndexPath.row)
+
+        UserDefaults.standard.set(try? JSONEncoder().encode(locationPersistents), forKey: "SavedLocations")
+        cityListPersistent = locationPersistents
+        
+        tableView.reloadData()
     }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +21,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationListTableViewCell" id="5Um-z5-4kd" customClass="LocationListTableViewCell" customModule="Weather" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="412" height="41.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="412" height="41.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Um-z5-4kd" id="wSt-x5-7se">
                                             <rect key="frame" x="0.0" y="0.0" width="412" height="41.5"/>
@@ -57,24 +57,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KU8-BW-8xn">
-                                <rect key="frame" x="259" y="829.5" width="35" height="29.5"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="6TQ-jU-UbT"/>
-                                    <constraint firstAttribute="width" constant="35" id="cI1-NN-tap"/>
-                                </constraints>
-                                <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="small"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4l5-D6-q3I">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4l5-D6-q3I">
                                 <rect key="frame" x="249" y="827" width="135" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="8NC-NT-IWB"/>
                                     <constraint firstAttribute="width" constant="135" id="HeV-eF-v9V"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Location">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="default"/>
                                 </state>
                                 <connections>
                                     <action selector="searchLocationButtonDidTouchUpInside:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OiA-Ix-ggT"/>
@@ -89,9 +81,7 @@
                             <constraint firstItem="YUQ-Za-P5l" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="1" id="9Ls-e9-cNp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4l5-D6-q3I" secondAttribute="trailing" constant="30" id="L1J-gQ-F4N"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="YUQ-Za-P5l" secondAttribute="bottom" constant="40" id="mup-c4-8yh"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="KU8-BW-8xn" secondAttribute="bottom" id="nbx-h1-sN9"/>
                             <constraint firstItem="YUQ-Za-P5l" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="yGa-hZ-wsV"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KU8-BW-8xn" secondAttribute="trailing" constant="120" id="zzT-pF-GbM"/>
                         </constraints>
                     </view>
                     <connections>
