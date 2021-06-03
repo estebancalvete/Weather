@@ -68,9 +68,11 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
             } else {
                 locationPersistents.append(cityDetails)
             }
-            UserDefaults.standard.set(try? JSONEncoder().encode(locationPersistents), forKey: "SavedLocations")
-            cityListPersistent = locationPersistents
+        } else {
+            locationPersistents.append(cityDetails)
         }
+        UserDefaults.standard.set(try? JSONEncoder().encode(locationPersistents), forKey: "SavedLocations")
+        cityListPersistent = locationPersistents
     }
     
     
