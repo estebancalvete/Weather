@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,8 +18,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cpW-2l-Byt">
-                                <rect key="frame" x="0.0" y="64" width="414" height="798"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVF-GM-0cH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="130"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="vJX-am-tSY"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter location or drag on map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIK-FD-wrX">
                                 <rect key="frame" x="20" y="74" width="374" height="22"/>
                                 <constraints>
@@ -42,9 +50,9 @@
                                     <constraint firstAttribute="height" constant="40" id="Cvb-bX-K8M"/>
                                     <constraint firstAttribute="width" constant="65" id="jZz-5b-xlt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Select">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
                                     <action selector="selectButtonDidTouchUpInside:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="45E-vd-hcJ"/>
@@ -58,26 +66,44 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <state key="normal" title="Set Map Location">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
                                     <action selector="setLocationButtonDidTouchUpInside:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ofX-nl-H1t"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="QQJ-7N-n2f">
+                                <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eqq-JP-9Wh">
+                                <rect key="frame" x="192" y="435.5" width="30" height="34.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="2aS-Bf-RYe"/>
+                                    <constraint firstAttribute="height" constant="30" id="KaI-jK-Cye"/>
+                                </constraints>
+                                <imageReference key="image" image="mappin" catalog="system" symbolScale="large" renderingMode="original"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                         <constraints>
                             <constraint firstItem="aVn-q2-2je" firstAttribute="leading" secondItem="u4g-m7-9i1" secondAttribute="trailing" constant="10" id="3AH-1K-eJH"/>
+                            <constraint firstItem="eqq-JP-9Wh" firstAttribute="centerX" secondItem="cpW-2l-Byt" secondAttribute="centerX" id="5yR-QO-8ix"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8xu-KF-UkS" secondAttribute="trailing" constant="20" id="741-dr-PLj"/>
                             <constraint firstItem="u4g-m7-9i1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="7No-hq-ZlM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aVn-q2-2je" secondAttribute="trailing" constant="20" id="98f-mQ-60D"/>
                             <constraint firstItem="u4g-m7-9i1" firstAttribute="top" secondItem="JIK-FD-wrX" secondAttribute="bottom" constant="10" id="EqB-xt-BLl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cpW-2l-Byt" secondAttribute="trailing" id="ItE-OO-PP6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8xu-KF-UkS" secondAttribute="bottom" constant="20" id="JQk-qS-z8T"/>
-                            <constraint firstItem="cpW-2l-Byt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="Tm0-oC-3UV"/>
+                            <constraint firstItem="cpW-2l-Byt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Tm0-oC-3UV"/>
+                            <constraint firstItem="eqq-JP-9Wh" firstAttribute="centerY" secondItem="cpW-2l-Byt" secondAttribute="centerY" id="Vf6-L3-z4B"/>
+                            <constraint firstItem="QQJ-7N-n2f" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="WHC-fc-1g4"/>
+                            <constraint firstItem="QQJ-7N-n2f" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="aG8-2m-79v"/>
+                            <constraint firstItem="oVF-GM-0cH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="d3Q-f7-nfm"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="oVF-GM-0cH" secondAttribute="trailing" id="h55-Qk-QwH"/>
                             <constraint firstItem="8xu-KF-UkS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="itu-uD-K0o"/>
                             <constraint firstItem="aVn-q2-2je" firstAttribute="top" secondItem="JIK-FD-wrX" secondAttribute="bottom" constant="10" id="jhT-mJ-ZLd"/>
+                            <constraint firstItem="oVF-GM-0cH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="kgR-Fq-5Dl"/>
                             <constraint firstItem="JIK-FD-wrX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="qkM-fh-65u"/>
                             <constraint firstItem="JIK-FD-wrX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="rC9-bO-tUl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="cpW-2l-Byt" secondAttribute="bottom" id="tTS-vW-Ymy"/>
@@ -86,6 +112,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="QQJ-7N-n2f" id="iv4-6g-sCX"/>
                         <outlet property="locationInputField" destination="u4g-m7-9i1" id="yig-Lb-vdp"/>
                         <outlet property="mapView" destination="cpW-2l-Byt" id="sQB-de-3j9"/>
                         <outlet property="setLocationButton" destination="8xu-KF-UkS" id="05c-Ig-kzy"/>
@@ -97,6 +124,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="mappin" catalog="system" width="105" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

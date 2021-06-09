@@ -25,6 +25,8 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     @IBOutlet weak var currentWeatherImage: UIImageView!
     @IBOutlet weak var forecastWeatherTable: UITableView!
     @IBOutlet weak var hourlyForecastCollection: UICollectionView!
+    @IBOutlet weak var collectionViewActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var tableViewActivityIndicator: UIActivityIndicatorView!
     
     //MARK: Live Cicle
     
@@ -35,6 +37,9 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
         networkService = NetworkService()
         networkService?.delegate = self
         configureLocation()
+        collectionViewActivityIndicator.startAnimating()
+        tableViewActivityIndicator.startAnimating()
+        
     }
     
     //MARK: IBActions
@@ -68,6 +73,8 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     //MARK: NetworkServiceDelegate Functions
     
     func networkServiceDidGetWeatherData(response: OneCallResponse?) {
+        collectionViewActivityIndicator.stopAnimating()
+        tableViewActivityIndicator.stopAnimating()
         self.apiResponse = response
         self.forecastWeatherTable.reloadData()
         self.hourlyForecastCollection.reloadData()

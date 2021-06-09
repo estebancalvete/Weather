@@ -20,6 +20,7 @@ class SearchLocationViewController: UIViewController, UITextFieldDelegate, Netwo
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationInputField: UITextField!
     @IBOutlet weak var setLocationButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     //MARK: Live Cicle
@@ -43,13 +44,17 @@ class SearchLocationViewController: UIViewController, UITextFieldDelegate, Netwo
         if let textToSearch: String = locationInputField.text {
             networkService?.cityName = textToSearch.folding(options: .diacriticInsensitive, locale: .current)
             networkService?.getLocationCoordinates()
+            activityIndicator.startAnimating()
         }
+        locationInputField.resignFirstResponder()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let textToSearch: String = locationInputField.text {
             networkService?.cityName = textToSearch.folding(options: .diacriticInsensitive, locale: .current)
             networkService?.getLocationCoordinates()
+            activityIndicator.startAnimating()
         }
+        locationInputField.resignFirstResponder()
         return true
     }
     
@@ -64,6 +69,7 @@ class SearchLocationViewController: UIViewController, UITextFieldDelegate, Netwo
     }
     
     func networkServiceDidGetLocationCoordinates(response: GeocodingResponse?) {
+        activityIndicator.stopAnimating()
         guard let coordinates = response?.geocodingData.first else { return }
         let mapCenter = CLLocationCoordinate2D(latitude: coordinates.lat, longitude: coordinates.lon)
         let mapRegion = MKCoordinateRegion(center: mapCenter, latitudinalMeters: 25000, longitudinalMeters: 25000)

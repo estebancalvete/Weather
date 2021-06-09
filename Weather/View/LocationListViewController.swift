@@ -64,15 +64,16 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
             let array = try? JSONDecoder().decode(Array<GeocodingData>.self, from: data)
             if array != nil {
                 locationPersistents.append(contentsOf: array!)
-                locationPersistents.append(cityDetails)
-            } else {
-                locationPersistents.append(cityDetails)
             }
-        } else {
-            locationPersistents.append(cityDetails)
         }
-        UserDefaults.standard.set(try? JSONEncoder().encode(locationPersistents), forKey: "SavedLocations")
-        cityListPersistent = locationPersistents
+        let isContained: Bool = locationPersistents.contains { (geoData) -> Bool in
+            return geoData.name == cityDetails.name
+        }
+        if !isContained {
+            locationPersistents.append(cityDetails)
+            UserDefaults.standard.set(try? JSONEncoder().encode(locationPersistents), forKey: "SavedLocations")
+            cityListPersistent = locationPersistents
+        }
     }
     
     
