@@ -76,6 +76,21 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    private func deleteOnUserDefaults(cityDetails: GeocodingData) {
+        var locationPersistents: [GeocodingData] = []
+        if let data = UserDefaults.standard.value(forKey: "SavedLocations") as? Data {
+            let array = try? JSONDecoder().decode(Array<GeocodingData>.self, from: data)
+            if array != nil {
+                locationPersistents.append(contentsOf: array!)
+            }
+        }
+        let newArray = locationPersistents.filter { (geoData) -> Bool in
+            return geoData.name != cityDetails.name
+        }
+        UserDefaults.standard.set(try? JSONEncoder().encode(newArray), forKey: "SavedLocations")
+        cityListPersistent = newArray
+    }
+    
     
     
     //MARK: SearchLocationViewControllerDelegate Functions
