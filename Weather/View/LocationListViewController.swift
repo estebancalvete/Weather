@@ -45,6 +45,13 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
         self.present(searchLocationViewController, animated: true, completion: nil)
     }
     
+    @IBAction func editTableButtonDidTuchUpInside(_ sender: Any) {
+        if locationListTableView.isEditing == true {
+            locationListTableView.isEditing = false
+        } else {
+            locationListTableView.isEditing = true
+        }
+    }
     
     //MARK: Functions
     
@@ -140,5 +147,36 @@ class LocationListViewController: UIViewController, UITableViewDataSource, UITab
         let city = cityListPersistent[indexPath.row]
         delegate?.locationListViewControllerDidSelectCity(city: city)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteOnUserDefaults(cityDetails: cityListPersistent[indexPath.row])
+            locationListTableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        var locationPersistents: [GeocodingData] = []
+        if let data = UserDefaults.standard.value(forKey: "SavedLocations") as? Data {
+            let array = try? JSONDecoder().decode(Array<GeocodingData>.self, from: data)
+            if array != nil {
+                locationPersistents.append(contentsOf: array!)
+            }
+        }
+        let itemToMove = locationPersistents[sourceIndexPath.row]
+        locationPersistents.remove(at: sourceIndexPath.row)
+        locationPersistents.insert(itemToMove, at: destinationIndexPath.row)
+        UserDefaults.standard.set(try? JSONEncoder().encode(locationPersistents), forKey: "SavedLocations")
+        cityListPersistent = locationPersistents
+        tableView.reloadData()
     }
 }

@@ -20,8 +20,23 @@
                                 <rect key="frame" x="1" y="0.0" width="413" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOA-Mm-t1P">
+                                <rect key="frame" x="364" y="64" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JRu-Fx-Gle"/>
+                                    <constraint firstAttribute="width" constant="30" id="Uvd-Mu-VD6"/>
+                                </constraints>
+                                <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <imageReference key="image" image="line.horizontal.3" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="editTableButtonDidTuchUpInside:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YAg-D2-bf9"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YUQ-Za-P5l">
-                                <rect key="frame" x="1" y="64" width="412" height="758"/>
+                                <rect key="frame" x="1" y="104" width="412" height="718"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationListTableViewCell" id="5Um-z5-4kd" customClass="LocationListTableViewCell" customModule="Weather" customModuleProvider="target">
@@ -85,9 +100,11 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="4l5-D6-q3I" secondAttribute="bottom" id="4f4-nv-YgJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="YUQ-Za-P5l" secondAttribute="trailing" constant="1" id="4mp-Pi-TAI"/>
                             <constraint firstItem="YUQ-Za-P5l" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="1" id="9Ls-e9-cNp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hOA-Mm-t1P" secondAttribute="trailing" constant="20" id="I4S-UL-oKM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4l5-D6-q3I" secondAttribute="trailing" constant="30" id="L1J-gQ-F4N"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="YUQ-Za-P5l" secondAttribute="bottom" constant="40" id="mup-c4-8yh"/>
-                            <constraint firstItem="YUQ-Za-P5l" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="yGa-hZ-wsV"/>
+                            <constraint firstItem="hOA-Mm-t1P" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="rzp-O9-kaV"/>
+                            <constraint firstItem="YUQ-Za-P5l" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="yGa-hZ-wsV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -101,6 +118,7 @@
     </scenes>
     <resources>
         <image name="240-ai" width="3300" height="2000"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
     </resources>
 </document>
