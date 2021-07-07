@@ -41,10 +41,12 @@ class SearchLocationViewController: UIViewController, UITextFieldDelegate, Netwo
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func selectButtonDidTouchUpInside(_ sender: Any) {
-        if let textToSearch: String = locationInputField.text {
-            networkService?.cityName = textToSearch
-            networkService?.getLocationCoordinates()
-            activityIndicator.startAnimating()
+        if let textOnField: String = locationInputField.text {
+            if let textToSearch = textOnField.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                    networkService?.cityName = textToSearch
+                    networkService?.getLocationCoordinates()
+                    activityIndicator.startAnimating()
+            }
         }
         locationInputField.resignFirstResponder()
     }
