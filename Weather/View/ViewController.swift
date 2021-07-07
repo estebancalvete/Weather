@@ -133,7 +133,7 @@ class ViewController: UIViewController, UITableViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourlyForecastCollectionViewCell", for: indexPath) as! HourlyForecastCollectionViewCell
         if let apiResponse = apiResponse {
-            cell.configure(data: apiResponse.hourly[indexPath.row])
+            cell.configure(data: apiResponse.hourly[indexPath.row], timeOffset: apiResponse.timezone_offset)
         }
         return cell
     }

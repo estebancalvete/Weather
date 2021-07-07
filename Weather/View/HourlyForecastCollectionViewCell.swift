@@ -13,10 +13,10 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     
     //MARK: Functions
     
-    func configure(data: HourlyWeather) {
+    func configure(data: HourlyWeather, timeOffset: Double) {
         hourlyTempLabel.text = String(format: "%.0f", data.temp) + " ºC"
         weatherImage.image = UIImage(named: data.weather.first?.icon ?? "01d")
-        let time = Date(timeIntervalSince1970: data.dt)
+        let time = Date(timeIntervalSince1970: (data.dt + timeOffset))
         hourOfDayLabel.text = hourOfDay(date: time)
     }
     
